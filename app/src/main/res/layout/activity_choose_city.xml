@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="50dp"
+    android:paddingRight="50dp"
+    tools:context=".ChooseCityActivity">
+
+    <TextView
+        android:text="@string/choose_city"
+        android:textSize="26sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="36dp"
+        />
+
+    <AutoCompleteTextView
+        android:id="@+id/autocomplete_city"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:drawableLeft="@android:drawable/ic_dialog_map"
+        android:inputType="textAutoComplete"
+        android:singleLine="true"
+        android:drawableStart="@android:drawable/ic_dialog_map" />
+
+    <Button
+
+        android:visibility="invisible"
+        android:id="@+id/go_next_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/next"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:background="@drawable/button"/>
+
+</LinearLayout>
