@@ -3,4 +3,5 @@
     <string name="next">Далее</string>
     <string name="choose_city">Укажите город:</string>
     <string name="title_activity_category">Выберете категории: </string>
+    <string name="picture">Picture</string>
 </resources>
