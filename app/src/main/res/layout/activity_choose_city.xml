@@ -35,7 +35,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:text="@string/next"
-        style="@style/Widget.AppCompat.Button.Colored"
+        android:textSize="16sp"
+        android:textColor="#FFF"
         android:background="@drawable/button"/>
 
 </LinearLayout>

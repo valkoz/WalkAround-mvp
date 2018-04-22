@@ -29,7 +29,10 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="36dp"
         android:text="@string/next"
-        android:visibility="invisible" />
+        android:visibility="invisible"
+        android:textSize="16sp"
+        android:textColor="#FFF"
+        android:background="@drawable/button"/>
 
 
 </RelativeLayout>
