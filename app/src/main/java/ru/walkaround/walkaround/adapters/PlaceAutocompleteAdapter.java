@@ -1,4 +1,4 @@
-package ru.walkaround.walkaround;
+package ru.walkaround.walkaround.adapters;
 
 import android.content.Context;
 import android.graphics.Typeface;

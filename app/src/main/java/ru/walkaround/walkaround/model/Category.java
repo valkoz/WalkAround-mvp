@@ -1,4 +1,4 @@
-package ru.walkaround.walkaround;
+package ru.walkaround.walkaround.model;
 
 public class Category {
 

@@ -25,6 +25,8 @@ import com.google.android.gms.maps.model.RuntimeRemoteException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
+import ru.walkaround.walkaround.adapters.PlaceAutocompleteAdapter;
+
 public class ChooseCityActivity extends AppCompatActivity {
 
     public static final String TAG = "SampleActivityBase";

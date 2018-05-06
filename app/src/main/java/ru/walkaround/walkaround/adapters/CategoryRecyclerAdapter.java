@@ -1,4 +1,4 @@
-package ru.walkaround.walkaround;
+package ru.walkaround.walkaround.adapters;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
@@ -16,6 +16,9 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 
 import java.util.List;
+
+import ru.walkaround.walkaround.R;
+import ru.walkaround.walkaround.model.Category;
 
 public class CategoryRecyclerAdapter extends
         RecyclerView.Adapter<CategoryRecyclerAdapter.MyViewHolder> {
