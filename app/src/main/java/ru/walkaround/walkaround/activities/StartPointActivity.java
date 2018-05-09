@@ -1,4 +1,4 @@
-package ru.walkaround.walkaround;
+package ru.walkaround.walkaround.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,6 +21,9 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import ru.walkaround.walkaround.IntentUtils;
+import ru.walkaround.walkaround.R;
 
 public class StartPointActivity extends AppCompatActivity implements OnMapReadyCallback {
 

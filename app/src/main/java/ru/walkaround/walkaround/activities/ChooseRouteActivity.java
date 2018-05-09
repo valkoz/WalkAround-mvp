@@ -1,7 +1,7 @@
-package ru.walkaround.walkaround;
+package ru.walkaround.walkaround.activities;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -9,9 +9,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import ru.walkaround.walkaround.adapters.CategoryRecyclerAdapter;
+import ru.walkaround.walkaround.R;
 import ru.walkaround.walkaround.adapters.ChooseRouteRecyclerAdapter;
-import ru.walkaround.walkaround.model.Category;
 import ru.walkaround.walkaround.model.Place;
 import ru.walkaround.walkaround.model.Route;
 
@@ -39,7 +38,7 @@ public class ChooseRouteActivity extends AppCompatActivity {
     private void initStubRoutes() {
 
         List<Place> places = new ArrayList<>();
-        List<String> placeNames = Arrays.asList("Bolshoy Theatre", "Gorkiy Park", "Kremlin");
+        List<String> placeNames = Arrays.asList("Bolshoy Theatre", "Ivan the Great White Bell Tower", "Kremlin");
 
         for (String s : placeNames) {
             Place p = new Place(s);

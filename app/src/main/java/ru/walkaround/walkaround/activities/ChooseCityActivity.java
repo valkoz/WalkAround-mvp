@@ -1,4 +1,4 @@
-package ru.walkaround.walkaround;
+package ru.walkaround.walkaround.activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -25,6 +25,8 @@ import com.google.android.gms.maps.model.RuntimeRemoteException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
+import ru.walkaround.walkaround.IntentUtils;
+import ru.walkaround.walkaround.R;
 import ru.walkaround.walkaround.adapters.PlaceAutocompleteAdapter;
 
 public class ChooseCityActivity extends AppCompatActivity {
@@ -51,6 +53,12 @@ public class ChooseCityActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         Log.i("ChooseCityActivity", "started");
+
+        /* Нужна тема NoActionBarTransparent, которая сломана*/
+        /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            Window w = getWindow();
+            w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        }*/
 
         double lat = getIntent().getDoubleExtra(IntentUtils.LATITUDE, 0);
         double lng = getIntent().getDoubleExtra(IntentUtils.LONGITUDE, 0);

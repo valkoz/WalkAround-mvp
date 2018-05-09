@@ -37,37 +37,37 @@
                     android:id="@+id/choose_route_time"
                     android:hint="3:50"
                     android:textSize="16sp"
-                    android:textAlignment="center"
                     android:textColor="@color/textColor"
                     android:fontFamily="@font/montserrat_bold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableLeft="@drawable/icon_time"
-                    android:drawableStart="@drawable/icon_time" />
+                    android:drawableStart="@drawable/icon_time"
+                    android:drawablePadding="10dp" />
 
                 <TextView
                     android:id="@+id/choose_route_distance"
                     android:hint="10 км"
                     android:textSize="16sp"
-                    android:textAlignment="center"
                     android:textColor="@color/textColor"
                     android:fontFamily="@font/montserrat_bold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableLeft="@drawable/icon_route"
-                    android:drawableStart="@drawable/icon_route" />
+                    android:drawableStart="@drawable/icon_route"
+                    android:drawablePadding="10dp" />
 
                 <TextView
                     android:id="@+id/choose_route_cost"
                     android:hint="1000 руб"
                     android:textSize="16sp"
-                    android:textAlignment="center"
                     android:textColor="@color/textColor"
                     android:fontFamily="@font/montserrat_bold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableLeft="@drawable/icon_rub"
-                    android:drawableStart="@drawable/icon_rub" />
+                    android:drawableStart="@drawable/icon_rub"
+                    android:drawablePadding="10dp" />
 
             </LinearLayout>
 
@@ -83,10 +83,13 @@
                     android:textStyle="bold"
                     android:textSize="20sp"
                     android:textColor="@color/textColor"
+                    android:ellipsize="end"
+                    android:maxLines="1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableLeft="@drawable/icon_museum"
-                    android:drawableStart="@drawable/icon_museum" />
+                    android:drawableStart="@drawable/icon_museum"
+                    android:drawablePadding="20dp" />
 
                 <TextView
                     android:id="@+id/choose_route_place2"
@@ -94,10 +97,14 @@
                     android:textStyle="bold"
                     android:textSize="20sp"
                     android:textColor="@color/textColor"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:alpha="0.3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableLeft="@drawable/icon_park"
-                    android:drawableStart="@drawable/icon_park" />
+                    android:drawableStart="@drawable/icon_park"
+                    android:drawablePadding="20dp" />
 
                 <TextView
                     android:id="@+id/choose_route_place3"
@@ -105,10 +112,14 @@
                     android:textStyle="bold"
                     android:textSize="20sp"
                     android:textColor="@color/textColor"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:alpha="0.3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableLeft="@drawable/icon_museum"
-                    android:drawableStart="@drawable/icon_museum" />
+                    android:drawableStart="@drawable/icon_museum"
+                    android:drawablePadding="20dp" />
 
             </LinearLayout>
         </RelativeLayout>

@@ -11,26 +11,40 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".ChooseCityActivity"
-            android:windowSoftInputMode="stateVisible" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCXMFFtu95j43A4qPV7QNCB6yyhtMN0gig" />
 
-        <activity android:name=".SplashActivity">
+        <activity
+            android:name=".activities.SplashActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".StartPointActivity" />
+
         <activity
-            android:name=".CategoryActivity"
-            android:label="@string/title_activity_category" />
-        <activity android:name=".ChooseRouteActivity"></activity>
+            android:name=".activities.ChooseCityActivity"
+            android:theme="@style/NoActionBar"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateVisible" />
+
+        <activity
+            android:name=".activities.StartPointActivity"
+            android:theme="@style/NoActionBar"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activities.CategoryActivity"
+            android:label="@string/title_activity_category"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activities.ChooseRouteActivity"
+            android:label="@string/routes"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

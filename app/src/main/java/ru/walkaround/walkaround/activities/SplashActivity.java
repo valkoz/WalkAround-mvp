@@ -1,4 +1,4 @@
-package ru.walkaround.walkaround;
+package ru.walkaround.walkaround.activities;
 
 import android.Manifest;
 import android.content.Intent;

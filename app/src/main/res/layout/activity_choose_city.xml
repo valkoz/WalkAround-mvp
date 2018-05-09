@@ -9,7 +9,7 @@
     android:paddingTop="150dp"
     android:gravity="center_horizontal"
     android:background="@drawable/background_start_drawable"
-    tools:context=".ChooseCityActivity">
+    tools:context=".activities.ChooseCityActivity">
 
     <TextView
         android:text="@string/choose_city"

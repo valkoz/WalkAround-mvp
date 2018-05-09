@@ -1,17 +1,17 @@
-package ru.walkaround.walkaround;
+package ru.walkaround.walkaround.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 import android.widget.Button;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import ru.walkaround.walkaround.R;
 import ru.walkaround.walkaround.adapters.CategoryRecyclerAdapter;
 import ru.walkaround.walkaround.model.Category;
 
