@@ -60,7 +60,7 @@ public class ChooseRouteRecyclerAdapter extends
     public void onBindViewHolder(@NonNull RouteViewHolder holder, int position) {
         Route r = routeList.get(position);
 
-        holder.timeInMinutes.setText(r.getMinutes() + "");
+        holder.timeInMinutes.setText(r.getMinutes());
         holder.distance.setText(r.getDistance());
         holder.cost.setText(r.getCost());
 

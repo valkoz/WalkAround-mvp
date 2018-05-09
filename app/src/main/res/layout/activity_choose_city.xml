@@ -6,37 +6,43 @@
     android:orientation="vertical"
     android:paddingLeft="50dp"
     android:paddingRight="50dp"
+    android:paddingTop="150dp"
+    android:gravity="center_horizontal"
+    android:background="@drawable/background_start_drawable"
     tools:context=".ChooseCityActivity">
 
     <TextView
         android:text="@string/choose_city"
+        android:fontFamily="@font/montserrat_bold"
         android:textSize="26sp"
+        android:textColor="@color/colorWhite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="36dp"
         />
 
     <AutoCompleteTextView
         android:id="@+id/autocomplete_city"
+        android:textColor="@color/colorWhite"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:drawableLeft="@android:drawable/ic_dialog_map"
+        android:layout_marginTop="20dp"
         android:inputType="textAutoComplete"
         android:singleLine="true"
-        android:drawableStart="@android:drawable/ic_dialog_map" />
+        android:drawableLeft="@drawable/icon_map"
+        android:drawableStart="@drawable/icon_map" />
 
     <Button
 
-        android:visibility="invisible"
         android:id="@+id/go_next_button"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="60dp"
         android:text="@string/next"
         android:textSize="16sp"
-        android:textColor="#FFF"
-        android:background="@drawable/button"/>
+        android:fontFamily="@font/montserrat_bold"
+        android:textColor="@color/colorPrimary"
+        android:background="@drawable/buttonw"
+        android:drawableRight="@drawable/icon_arrow_p"
+        android:drawableEnd="@drawable/icon_arrow_p" />
 
 </LinearLayout>
