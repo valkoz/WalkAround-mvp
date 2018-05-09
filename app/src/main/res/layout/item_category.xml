@@ -20,16 +20,9 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:text="@+id/label"
-        android:textColor="@color/colorWhite"
+        android:textColor="@color/colorAccent"
         android:textStyle="bold"
         android:textAlignment="center"
         android:textSize="26sp" />
 
-    <CheckBox
-        android:id="@+id/check"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="?android:attr/starStyle"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true" />
 </RelativeLayout>

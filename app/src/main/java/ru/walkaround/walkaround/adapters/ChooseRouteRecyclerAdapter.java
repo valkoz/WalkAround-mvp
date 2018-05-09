@@ -3,6 +3,7 @@ package ru.walkaround.walkaround.adapters;
 import android.app.Activity;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ru.walkaround.walkaround.R;
+import ru.walkaround.walkaround.listeners.RecyclerViewClickListener;
 import ru.walkaround.walkaround.model.Place;
 import ru.walkaround.walkaround.model.Route;
 
@@ -25,11 +27,12 @@ public class ChooseRouteRecyclerAdapter extends
         RecyclerView.Adapter<ChooseRouteRecyclerAdapter.RouteViewHolder> {
 
     private List<Route> routeList;
-
+    private RecyclerViewClickListener listener;
     private Activity context;
 
+    //OnClick implemented as here: https://android.jlelse.eu/click-listener-for-recyclerview-adapter-2d17a6f6f6c9
+    public class RouteViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-    public class RouteViewHolder extends RecyclerView.ViewHolder {
         public TextView timeInMinutes;
         public TextView distance;
         public TextView cost;
@@ -38,7 +41,9 @@ public class ChooseRouteRecyclerAdapter extends
         public TextView thirdPlace;
         public ImageView imageView;
 
-        public RouteViewHolder(View view) {
+        private RecyclerViewClickListener listener;
+
+        public RouteViewHolder(View view, RecyclerViewClickListener listener) {
             super(view);
             timeInMinutes = view.findViewById(R.id.choose_route_time);
             distance = view.findViewById(R.id.choose_route_distance);
@@ -47,13 +52,22 @@ public class ChooseRouteRecyclerAdapter extends
             secondPlace = view.findViewById(R.id.choose_route_place2);
             thirdPlace = view.findViewById(R.id.choose_route_place3);
             imageView = view.findViewById(R.id.choose_route_image);
+            this.listener = listener;
+            view.setOnClickListener(this);
         }
 
+        @Override
+        public void onClick(View v) {
+            Log.i("Do what you want here", "For instance, decolor image");
+//            imageView.setImageAlpha(1);
+            listener.onClick(v, getAdapterPosition());
+        }
     }
 
-    public ChooseRouteRecyclerAdapter(List<Route> routes, Activity context) {
+    public ChooseRouteRecyclerAdapter(List<Route> routes, Activity context, RecyclerViewClickListener listener) {
         this.routeList = routes;
         this.context = context;
+        this.listener = listener;
     }
 
     @Override
@@ -98,6 +112,6 @@ public class ChooseRouteRecyclerAdapter extends
     public RouteViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_route, parent, false);
-        return new RouteViewHolder(v);
+        return new RouteViewHolder(v, listener);
     }
 }

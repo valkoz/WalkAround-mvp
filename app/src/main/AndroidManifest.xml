@@ -11,7 +11,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCXMFFtu95j43A4qPV7QNCB6yyhtMN0gig" />
@@ -21,30 +20,28 @@
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".activities.ChooseCityActivity"
-            android:theme="@style/NoActionBar"
             android:screenOrientation="portrait"
+            android:theme="@style/NoActionBar"
             android:windowSoftInputMode="stateVisible" />
-
         <activity
             android:name=".activities.StartPointActivity"
-            android:theme="@style/NoActionBar"
-            android:screenOrientation="portrait" />
-
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBar" />
         <activity
             android:name=".activities.CategoryActivity"
             android:label="@string/title_activity_category"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".activities.ChooseRouteActivity"
             android:label="@string/routes"
             android:screenOrientation="portrait" />
+        <activity android:name=".activities.MainActivity"></activity>
     </application>
 
 </manifest>

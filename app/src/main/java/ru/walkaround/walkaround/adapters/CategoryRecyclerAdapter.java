@@ -6,7 +6,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,40 +17,61 @@ import com.bumptech.glide.request.RequestOptions;
 import java.util.List;
 
 import ru.walkaround.walkaround.R;
+import ru.walkaround.walkaround.listeners.RecyclerViewClickListener;
 import ru.walkaround.walkaround.model.Category;
 
 public class CategoryRecyclerAdapter extends
         RecyclerView.Adapter<CategoryRecyclerAdapter.MyViewHolder> {
 
+    private final static int OPAQUE = 0b11111111;
+    private final static int TRANSPERENT = 0b01111111;
+
     private List<Category> categoryList;
 
     private Activity context;
 
+    private RecyclerViewClickListener listener;
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView countryText;
-        public CheckBox checkBox;
         public ImageView imageView;
 
-        public MyViewHolder(View view) {
+        private RecyclerViewClickListener listener;
+
+        public MyViewHolder(View view, RecyclerViewClickListener listener) {
             super(view);
             countryText = view.findViewById(R.id.label);
-            checkBox = view.findViewById(R.id.check);
             imageView = view.findViewById(R.id.image_category);
+
+            this.listener = listener;
+            view.setOnClickListener(this);
         }
 
+        @Override
+        public void onClick(View v) {
+
+            if (imageView.isSelected()) {
+                imageView.setSelected(false);
+                imageView.setImageAlpha(TRANSPERENT);
+            } else {
+                imageView.setSelected(true);
+                imageView.setImageAlpha(OPAQUE);
+            }
+            listener.onClick(v, getAdapterPosition());
+        }
     }
 
-    public CategoryRecyclerAdapter(List<Category> countryList, Activity context) {
+    public CategoryRecyclerAdapter(List<Category> countryList, Activity context, RecyclerViewClickListener listener) {
         this.categoryList = countryList;
         this.context = context;
+        this.listener = listener;
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Category c = categoryList.get(position);
         holder.countryText.setText(c.getName());
-        holder.checkBox.setPressed(c.isSelected());
 
         //holder.imageView.setImageResource(c.getImage());
         //USAGE: glide lib: https://github.com/bumptech/glide
@@ -62,6 +82,8 @@ public class CategoryRecyclerAdapter extends
                 .load(c.getImage())
                 .apply(requestOptions)
                 .into(holder.imageView);
+
+        holder.imageView.setImageAlpha(TRANSPERENT);
 
     }
 
@@ -75,6 +97,6 @@ public class CategoryRecyclerAdapter extends
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_category,parent, false);
-        return new MyViewHolder(v);
+        return new MyViewHolder(v, listener);
     }
 }

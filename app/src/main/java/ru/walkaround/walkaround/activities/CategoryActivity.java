@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Button;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,6 +14,7 @@ import java.util.List;
 
 import ru.walkaround.walkaround.R;
 import ru.walkaround.walkaround.adapters.CategoryRecyclerAdapter;
+import ru.walkaround.walkaround.listeners.RecyclerViewClickListener;
 import ru.walkaround.walkaround.model.Category;
 
 public class CategoryActivity extends AppCompatActivity {
@@ -37,7 +39,11 @@ public class CategoryActivity extends AppCompatActivity {
             categories.add(c);
         }
 
-        CategoryRecyclerAdapter categoryRecyclerAdapter = new CategoryRecyclerAdapter(categories, this);
+        RecyclerViewClickListener listener =
+                (view, position) ->
+                        Toast.makeText(this, "Position " + position, Toast.LENGTH_SHORT).show();
+
+        CategoryRecyclerAdapter categoryRecyclerAdapter = new CategoryRecyclerAdapter(categories, this, listener);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(categoryRecyclerAdapter);
