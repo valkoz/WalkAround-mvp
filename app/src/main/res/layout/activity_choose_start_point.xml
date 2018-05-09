@@ -20,19 +20,29 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/place_autocomplete" />
 
-    <Button
-        android:id="@+id/go_next_button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <LinearLayout
+        android:id="@+id/choose_start_point_button_layout"
+        android:layout_width="match_parent"
+        android:visibility="invisible"
+        android:layout_height="100dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="36dp"
-        android:text="@string/next"
-        android:visibility="invisible"
-        android:textSize="16sp"
-        android:textColor="#FFF"
-        android:background="@drawable/button"/>
+        android:gravity="center"
+        android:background="@drawable/gradient">
+
+        <Button
+            android:id="@+id/go_next_button1"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="@string/next"
+            android:textSize="16sp"
+            android:textAllCaps="false"
+            android:fontFamily="@font/montserrat_bold"
+            android:background="@drawable/buttonw"
+            android:textColor="@color/colorPrimary"
+            android:drawableRight="@drawable/icon_arrow_p"
+            android:drawableEnd="@drawable/icon_arrow_p" />
+    </LinearLayout>
 
 
 </RelativeLayout>

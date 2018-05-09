@@ -35,9 +35,13 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text="@string/next"
-            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textAllCaps="false"
+            android:fontFamily="@font/montserrat_bold"
             android:background="@drawable/buttonw"
-            android:textColor="@color/colorPrimary" />
+            android:textColor="@color/colorPrimary"
+            android:drawableRight="@drawable/icon_arrow_p"
+            android:drawableEnd="@drawable/icon_arrow_p" />
     </LinearLayout>
 
 

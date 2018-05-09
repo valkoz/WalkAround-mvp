@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.Place;
@@ -26,6 +27,7 @@ public class StartPointActivity extends AppCompatActivity implements OnMapReadyC
     private GoogleMap mMap;
     private PlaceAutocompleteFragment placeAutoComplete;
     private Marker marker;
+    private LinearLayout ll;
 
     private LatLng initialMarkerPosition;
     private boolean isLocatedNearby;
@@ -39,6 +41,7 @@ public class StartPointActivity extends AppCompatActivity implements OnMapReadyC
         setContentView(R.layout.activity_choose_start_point);
 
         goNext = findViewById(R.id.go_next_button1);
+        ll = findViewById(R.id.choose_start_point_button_layout);
 
 
         double lng = getIntent().getDoubleExtra(IntentUtils.LONGITUDE, 0);
@@ -100,7 +103,8 @@ public class StartPointActivity extends AppCompatActivity implements OnMapReadyC
             mMap.animateCamera(CameraUpdateFactory.zoomTo(16));
             marker = mMap.addMarker(new MarkerOptions().position(initialMarkerPosition)
                     .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ROSE)));
-            goNext.setVisibility(View.VISIBLE);
+            //goNext.setVisibility(View.VISIBLE);
+            ll.setVisibility(View.VISIBLE);
         }
         else
             mMap.animateCamera(CameraUpdateFactory.zoomTo(12));
@@ -116,6 +120,7 @@ public class StartPointActivity extends AppCompatActivity implements OnMapReadyC
         mMap.moveCamera(CameraUpdateFactory.newLatLng(marker.getPosition()));
         mMap.animateCamera(CameraUpdateFactory.zoomTo(18));
 
-        goNext.setVisibility(View.VISIBLE);
+        //goNext.setVisibility(View.VISIBLE);
+        ll.setVisibility(View.VISIBLE);
     }
 }
