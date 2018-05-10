@@ -1,15 +1,14 @@
 package ru.walkaround.walkaround.model;
 
 
+import com.google.android.gms.maps.model.LatLng;
+
 public class Place {
 
     private String name;
-
     private int imageId;
-
-    public Place(String name) {
-        this.name = name;
-    }
+    private PlaceType type;
+    private LatLng latLng;
 
     public String getName() {
         return name;
@@ -27,9 +26,28 @@ public class Place {
         this.imageId = imageId;
     }
 
-    public Place(String name, int imageId) {
+    public LatLng getLatLng() {
+        return latLng;
+    }
+
+    public void setLatLng(LatLng latLng) {
+        this.latLng = latLng;
+    }
+
+    public PlaceType getType() {
+        return type;
+    }
+
+    public void setType(PlaceType type) {
+        this.type = type;
+    }
+
+    public Place(String name, int imageId, LatLng latLng, PlaceType placeType) {
 
         this.name = name;
         this.imageId = imageId;
+        this.latLng = latLng;
+        this.type = placeType;
     }
+
 }
