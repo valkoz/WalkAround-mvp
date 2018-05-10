@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingLeft="50dp"
-    android:paddingRight="50dp"
+    android:paddingStart="50dp"
+    android:paddingEnd="50dp"
     android:paddingTop="150dp"
     android:gravity="center_horizontal"
     android:background="@drawable/background_start_drawable"
@@ -28,7 +28,6 @@
         android:layout_marginTop="20dp"
         android:inputType="textAutoComplete"
         android:singleLine="true"
-        android:drawableLeft="@drawable/icon_map"
         android:drawableStart="@drawable/icon_map" />
 
     <Button
@@ -44,7 +43,6 @@
         android:fontFamily="@font/montserrat_bold"
         android:textColor="@color/colorPrimary"
         android:background="@drawable/buttonw"
-        android:drawableRight="@drawable/icon_arrow_p"
         android:drawableEnd="@drawable/icon_arrow_p" />
 
 </LinearLayout>

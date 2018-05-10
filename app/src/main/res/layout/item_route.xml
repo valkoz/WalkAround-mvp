@@ -28,9 +28,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
-                android:layout_toLeftOf="@id/choose_route_image"
                 android:layout_toStartOf="@id/choose_route_image">
 
                 <TextView
@@ -41,7 +39,6 @@
                     android:fontFamily="@font/montserrat_bold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/icon_time"
                     android:drawableStart="@drawable/icon_time"
                     android:drawablePadding="10dp" />
 
@@ -53,7 +50,6 @@
                     android:fontFamily="@font/montserrat_bold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/icon_route"
                     android:drawableStart="@drawable/icon_route"
                     android:drawablePadding="10dp" />
 
@@ -65,7 +61,6 @@
                     android:fontFamily="@font/montserrat_bold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/icon_rub"
                     android:drawableStart="@drawable/icon_rub"
                     android:drawablePadding="10dp" />
 
@@ -87,7 +82,6 @@
                     android:maxLines="1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/icon_museum"
                     android:drawableStart="@drawable/icon_museum"
                     android:drawablePadding="20dp" />
 
@@ -102,7 +96,6 @@
                     android:alpha="0.3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/icon_park"
                     android:drawableStart="@drawable/icon_park"
                     android:drawablePadding="20dp" />
 
@@ -117,7 +110,6 @@
                     android:alpha="0.3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/icon_museum"
                     android:drawableStart="@drawable/icon_museum"
                     android:drawablePadding="20dp" />
 

@@ -11,9 +11,7 @@
         android:layout_height="match_parent"
         android:overScrollMode="never"
 
-        android:layout_marginLeft="20dp"
         android:layout_marginStart="20dp"
-        android:layout_marginRight="20dp"
         android:layout_marginBottom="100dp"
         android:layout_marginEnd="20dp"
 
@@ -40,7 +38,6 @@
             android:fontFamily="@font/montserrat_bold"
             android:background="@drawable/buttonw"
             android:textColor="@color/colorPrimary"
-            android:drawableRight="@drawable/icon_arrow_p"
             android:drawableEnd="@drawable/icon_arrow_p" />
     </LinearLayout>
 
