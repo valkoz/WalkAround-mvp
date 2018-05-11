@@ -1,12 +1,15 @@
 package ru.walkaround.walkaround.activities;
 
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.transition.Slide;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
@@ -51,14 +54,11 @@ public class ChooseCityActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_choose_city);
+
+        getWindow().setExitTransition(new Slide(Gravity.START));
 
         Log.i("ChooseCityActivity", "started");
-
-        /* Нужна тема NoActionBarTransparent, которая сломана*/
-        /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            Window w = getWindow();
-            w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-        }*/
 
         double lat = getIntent().getDoubleExtra(IntentUtils.LATITUDE, 0);
         double lng = getIntent().getDoubleExtra(IntentUtils.LONGITUDE, 0);
@@ -75,7 +75,6 @@ public class ChooseCityActivity extends AppCompatActivity {
 
         mGeoDataClient = Places.getGeoDataClient(this);
 
-        setContentView(R.layout.activity_choose_city);
         mAutocompleteView = findViewById(R.id.autocomplete_city);
 
 
@@ -104,7 +103,7 @@ public class ChooseCityActivity extends AppCompatActivity {
                 intent.putExtra(IntentUtils.LATITUDE, cityLocation.getLatitude());
             }
 
-            startActivity(intent);
+            startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
         });
 
     }

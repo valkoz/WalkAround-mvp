@@ -1,9 +1,12 @@
 package ru.walkaround.walkaround.activities;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.transition.Slide;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -42,6 +45,9 @@ public class StartPointActivity extends AppCompatActivity implements OnMapReadyC
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_start_point);
+
+        getWindow().setExitTransition(new Slide(Gravity.START));
+        //getWindow().setEnterTransition(new Slide(Gravity.END));
 
         goNext = findViewById(R.id.go_next_button1);
         ll = findViewById(R.id.choose_start_point_button_layout);
@@ -83,7 +89,7 @@ public class StartPointActivity extends AppCompatActivity implements OnMapReadyC
             intent.putExtra(IntentUtils.LATITUDE, marker.getPosition().latitude);
 
 
-            startActivity(intent);
+            startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
         });
     }
 

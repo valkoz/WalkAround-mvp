@@ -1,10 +1,13 @@
 package ru.walkaround.walkaround.activities;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.transition.Slide;
+import android.view.Gravity;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -28,6 +31,9 @@ public class CategoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
 
+        getWindow().setExitTransition(new Slide(Gravity.START));
+        //getWindow().setEnterTransition(new Slide(Gravity.END));
+
         RecyclerView recyclerView = findViewById(R.id.categories_list);
         button = findViewById(R.id.category_button);
 
@@ -48,7 +54,8 @@ public class CategoryActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(categoryRecyclerAdapter);
 
-        button.setOnClickListener(v -> startActivity(new Intent(CategoryActivity.this, ChooseRouteActivity.class)));
+        button.setOnClickListener(v -> startActivity(new Intent(CategoryActivity.this, ChooseRouteActivity.class),
+                ActivityOptions.makeSceneTransitionAnimation(this).toBundle()));
 
 
 
