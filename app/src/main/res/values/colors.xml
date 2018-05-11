@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#4400AD</color>
     <color name="colorAccent">#FFFFFF</color>
     <color name="textColor">#FF2950</color>
+    <color name="secondaryTextColor">#666666</color>
     <color name="gradient_start">#FFC266</color>
     <color name="gradient_end">#FF2950</color>
     <color name="gradient_start_transparent">#BBFFC266</color>

@@ -41,7 +41,8 @@
             android:name=".activities.ChooseRouteActivity"
             android:label="@string/routes"
             android:screenOrientation="portrait" />
-        <activity android:name=".activities.MainActivity"></activity>
+        <activity android:name=".activities.MainActivity" />
+        <activity android:name=".activities.ChangeOptionsActivity"></activity>
     </application>
 
 </manifest>

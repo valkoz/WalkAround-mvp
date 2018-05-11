@@ -1,12 +1,14 @@
 package ru.walkaround.walkaround.activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomSheetBehavior;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -37,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     private MapView mapView;
     private GoogleMap map;
     BottomSheetBehavior sheetBehavior;
+    private FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         mapView.onCreate(savedInstanceState);
 
         LinearLayout layout = findViewById(R.id.bottom_sheet);
+        fab = findViewById(R.id.map_fab);
 
         sheetBehavior = BottomSheetBehavior.from(layout);
 
@@ -83,6 +87,8 @@ public class MainActivity extends AppCompatActivity {
         } else {
             mapView.getMapAsync(this::setUpMapRerouted);
         }
+
+        fab.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, ChangeOptionsActivity.class)));
     }
 
     private void setUpMapRerouted(GoogleMap map) {
