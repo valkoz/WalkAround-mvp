@@ -74,9 +74,10 @@
 
                 <TextView
                     android:id="@+id/choose_route_place1"
+                    android:paddingTop="5dp"
                     android:hint="Место 1"
                     android:fontFamily="@font/montserrat_bold"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:textColor="@color/textColor"
                     android:ellipsize="end"
                     android:maxLines="1"
@@ -87,9 +88,10 @@
 
                 <TextView
                     android:id="@+id/choose_route_place2"
+                    android:paddingTop="5dp"
                     android:hint="Место 2"
                     android:fontFamily="@font/montserrat_bold"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:textColor="@color/textColor"
                     android:ellipsize="end"
                     android:maxLines="1"
@@ -101,9 +103,10 @@
 
                 <TextView
                     android:id="@+id/choose_route_place3"
+                    android:paddingTop="5dp"
                     android:hint="Место 3"
                     android:fontFamily="@font/montserrat_bold"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:textColor="@color/textColor"
                     android:ellipsize="end"
                     android:maxLines="1"
