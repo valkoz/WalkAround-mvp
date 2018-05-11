@@ -1,8 +1,13 @@
 package ru.walkaround.walkaround.activities;
 
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomSheetBehavior;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -11,6 +16,7 @@ import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -102,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
 
             map.addMarker(new MarkerOptions()
                     .position(place.getLatLng())
-                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.icon_map)));
+                    .icon(bitmapDescriptorFromVector(this, R.drawable.ic_map)));
 
             if (previous != null) {
                 map.addPolyline(new PolylineOptions()
@@ -152,5 +158,14 @@ public class MainActivity extends AppCompatActivity {
     public void onLowMemory() {
         super.onLowMemory();
         mapView.onLowMemory();
+    }
+
+    private BitmapDescriptor bitmapDescriptorFromVector(Context context, int vectorResId) {
+        Drawable vectorDrawable = ContextCompat.getDrawable(context, vectorResId);
+        vectorDrawable.setBounds(0, 0, vectorDrawable.getIntrinsicWidth(), vectorDrawable.getIntrinsicHeight());
+        Bitmap bitmap = Bitmap.createBitmap(vectorDrawable.getIntrinsicWidth(), vectorDrawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+        vectorDrawable.draw(canvas);
+        return BitmapDescriptorFactory.fromBitmap(bitmap);
     }
 }

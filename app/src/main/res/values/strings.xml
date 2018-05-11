@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Walk Around</string>
+    <string name="app_name">WalkAround</string>
     <string name="next">Далее</string>
     <string name="choose_city">Укажите город:</string>
     <string name="title_activity_category">Выберете категории: </string>

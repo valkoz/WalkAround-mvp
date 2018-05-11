@@ -36,10 +36,10 @@
                     android:hint="3:50"
                     android:textSize="16sp"
                     android:textColor="@color/textColor"
-                    android:fontFamily="@font/montserrat_bold"
+                    android:fontFamily="@font/montserrat_medium"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableStart="@drawable/icon_time"
+                    android:drawableStart="@drawable/ic_time"
                     android:drawablePadding="10dp" />
 
                 <TextView
@@ -47,10 +47,10 @@
                     android:hint="10 км"
                     android:textSize="16sp"
                     android:textColor="@color/textColor"
-                    android:fontFamily="@font/montserrat_bold"
+                    android:fontFamily="@font/montserrat_medium"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableStart="@drawable/icon_route"
+                    android:drawableStart="@drawable/ic_route"
                     android:drawablePadding="10dp" />
 
                 <TextView
@@ -58,10 +58,10 @@
                     android:hint="1000 руб"
                     android:textSize="16sp"
                     android:textColor="@color/textColor"
-                    android:fontFamily="@font/montserrat_bold"
+                    android:fontFamily="@font/montserrat_medium"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableStart="@drawable/icon_rub"
+                    android:drawableStart="@drawable/ic_rub"
                     android:drawablePadding="10dp" />
 
             </LinearLayout>
@@ -75,20 +75,20 @@
                 <TextView
                     android:id="@+id/choose_route_place1"
                     android:hint="Место 1"
-                    android:textStyle="bold"
+                    android:fontFamily="@font/montserrat_bold"
                     android:textSize="20sp"
                     android:textColor="@color/textColor"
                     android:ellipsize="end"
                     android:maxLines="1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableStart="@drawable/icon_museum"
+                    android:drawableStart="@drawable/ic_museum"
                     android:drawablePadding="20dp" />
 
                 <TextView
                     android:id="@+id/choose_route_place2"
                     android:hint="Место 2"
-                    android:textStyle="bold"
+                    android:fontFamily="@font/montserrat_bold"
                     android:textSize="20sp"
                     android:textColor="@color/textColor"
                     android:ellipsize="end"
@@ -96,13 +96,13 @@
                     android:alpha="0.3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableStart="@drawable/icon_park"
+                    android:drawableStart="@drawable/ic_park"
                     android:drawablePadding="20dp" />
 
                 <TextView
                     android:id="@+id/choose_route_place3"
                     android:hint="Место 3"
-                    android:textStyle="bold"
+                    android:fontFamily="@font/montserrat_bold"
                     android:textSize="20sp"
                     android:textColor="@color/textColor"
                     android:ellipsize="end"
@@ -110,7 +110,7 @@
                     android:alpha="0.3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableStart="@drawable/icon_museum"
+                    android:drawableStart="@drawable/ic_museum"
                     android:drawablePadding="20dp" />
 
             </LinearLayout>

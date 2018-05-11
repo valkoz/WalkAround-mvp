@@ -23,12 +23,14 @@
     <AutoCompleteTextView
         android:id="@+id/autocomplete_city"
         android:textColor="@color/colorWhite"
+        android:textSize="20sp"
+        android:fontFamily="@font/montserrat_medium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:inputType="textAutoComplete"
         android:singleLine="true"
-        android:drawableStart="@drawable/icon_map" />
+        android:drawableStart="@drawable/ic_map" />
 
     <Button
 
@@ -43,6 +45,6 @@
         android:fontFamily="@font/montserrat_bold"
         android:textColor="@color/colorPrimary"
         android:background="@drawable/buttonw"
-        android:drawableEnd="@drawable/icon_arrow_p" />
+        android:drawableEnd="@drawable/ic_arrow_p" />
 
 </LinearLayout>
