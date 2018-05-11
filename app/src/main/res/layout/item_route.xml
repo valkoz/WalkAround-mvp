@@ -41,7 +41,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableStart="@drawable/ic_time"
-                    android:drawablePadding="10dp" />
+                    android:drawablePadding="@dimen/small_drawable_padding" />
 
                 <TextView
                     android:id="@+id/choose_route_distance"
@@ -52,7 +52,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableStart="@drawable/ic_route"
-                    android:drawablePadding="10dp" />
+                    android:drawablePadding="@dimen/small_drawable_padding" />
 
                 <TextView
                     android:id="@+id/choose_route_cost"
@@ -63,7 +63,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableStart="@drawable/ic_rub"
-                    android:drawablePadding="10dp" />
+                    android:drawablePadding="@dimen/small_drawable_padding" />
 
             </LinearLayout>
 
@@ -85,7 +85,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableStart="@drawable/ic_museum"
-                    android:drawablePadding="20dp" />
+                    android:drawablePadding="@dimen/normal_drawable_padding" />
 
                 <TextView
                     android:id="@+id/choose_route_place2"
@@ -100,7 +100,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableStart="@drawable/ic_park"
-                    android:drawablePadding="20dp" />
+                    android:drawablePadding="@dimen/normal_drawable_padding" />
 
                 <TextView
                     android:id="@+id/choose_route_place3"
@@ -115,7 +115,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableStart="@drawable/ic_museum"
-                    android:drawablePadding="20dp" />
+                    android:drawablePadding="@dimen/normal_drawable_padding" />
 
             </LinearLayout>
         </RelativeLayout>

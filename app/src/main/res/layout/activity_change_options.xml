@@ -8,8 +8,8 @@
 
     <TextView
         android:paddingTop="40dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginStart="@dimen/base_vertical_padding"
+        android:layout_marginEnd="@dimen/base_vertical_padding"
         android:text="Длительность маршрута: "
         android:fontFamily="@font/montserrat_bold"
         android:textSize="18sp"
@@ -19,8 +19,8 @@
 
     <TextView
         android:text="3 часа 3 минуты"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginStart="@dimen/base_vertical_padding"
+        android:layout_marginEnd="@dimen/base_vertical_padding"
         android:fontFamily="@font/montserrat_medium"
         android:textSize="12sp"
         android:textColor="@color/secondaryTextColor"
@@ -40,8 +40,8 @@
 
     <TextView
         android:paddingTop="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginStart="@dimen/base_vertical_padding"
+        android:layout_marginEnd="@dimen/base_vertical_padding"
         android:text="Протяженность маршрута: "
         android:fontFamily="@font/montserrat_bold"
         android:textSize="18sp"
@@ -51,8 +51,8 @@
 
     <TextView
         android:text="6 километров"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginStart="@dimen/base_vertical_padding"
+        android:layout_marginEnd="@dimen/base_vertical_padding"
         android:fontFamily="@font/montserrat_medium"
         android:textSize="12sp"
         android:textColor="@color/secondaryTextColor"
