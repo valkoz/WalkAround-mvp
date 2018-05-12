@@ -1,0 +1,63 @@
+{
+  "categories": [
+    {
+      "name": "Развлечения",
+      "drawable": "@drawable/drawable_entertainment",
+      "icon": "@drawable/ic_entertainment"
+    },
+    {
+      "name": "Музеи",
+      "drawable": "@drawable/drawable_museum",
+      "icon": "@drawable/ic_museum"
+    },
+    {
+      "name": "Еда",
+      "drawable": "@drawable/drawable_food",
+      "icon": "@drawable/ic_food"
+    },
+    {
+      "name": "Магазины",
+      "drawable": "@drawable/drawable_shop",
+      "icon": "@drawable/ic_shop"
+    },
+    {
+      "name": "Парки",
+      "drawable": "@drawable/drawable_park",
+      "icon": "@drawable/ic_park"
+    },
+    {
+      "name": "Религия",
+      "drawable": "@drawable/drawable_religion",
+      "icon": "@drawable/ic_religion"
+    }
+  ],
+  "routes": [
+    {
+      "time": "1:20",
+      "distance": "10 км",
+      "cost": "1500 руб",
+      "place1": "Кремль",
+      "place2": "Большой театр",
+      "place3": "Третьяковская галерея",
+      "image": "@drawable/stub_0"
+    },
+    {
+      "time": "4:50",
+      "distance": "5.5 км",
+      "cost": "3000 руб",
+      "place1": "Парк Горького",
+      "place2": "Царицыно Музей-заповедник",
+      "place3": "ГМИИ имени А.С. Пушкина",
+      "image": "@drawable/stub_1"
+    },
+    {
+      "time": "3:00",
+      "distance": "3 км",
+      "cost": "500 руб",
+      "place1": "ул. Старый Арбат",
+      "place2": "Исторический музей",
+      "place3": "Парк исскусств Музеон",
+      "image": "@drawable/stub_2"
+    }
+  ]
+}
