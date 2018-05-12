@@ -13,6 +13,7 @@
     <!-- Adding bottom sheet after main content -->
     <!-- <include layout="@layout/bottom_sheet" />-->
     <include
+        android:visibility="invisible"
         layout="@layout/bottom_card"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/bottom_card_size"
@@ -22,11 +23,11 @@
         android:id="@+id/map_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="28dp"
+        android:layout_margin="16dp"
         android:backgroundTint="@color/colorPrimary"
         android:src="@drawable/ic_pen"
         app:fabCustomSize="64dp"
         app:layout_anchor="@id/bottom_card"
-        app:layout_anchorGravity="top|end" />
+        app:layout_anchorGravity="bottom|end" />
 
 </android.support.design.widget.CoordinatorLayout>
