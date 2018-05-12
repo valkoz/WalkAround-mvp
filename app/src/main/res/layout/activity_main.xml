@@ -11,17 +11,22 @@
         android:layout_height="match_parent" />
 
     <!-- Adding bottom sheet after main content -->
-    <include layout="@layout/bottom_sheet" />
+    <!-- <include layout="@layout/bottom_sheet" />-->
+    <include
+        layout="@layout/bottom_card"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/bottom_card_size"
+        android:layout_gravity="bottom" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/map_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_margin="28dp"
         android:backgroundTint="@color/colorPrimary"
         android:src="@drawable/ic_pen"
         app:fabCustomSize="64dp"
-        app:layout_anchor="@id/bottom_sheet"
+        app:layout_anchor="@id/bottom_card"
         app:layout_anchorGravity="top|end" />
 
 </android.support.design.widget.CoordinatorLayout>

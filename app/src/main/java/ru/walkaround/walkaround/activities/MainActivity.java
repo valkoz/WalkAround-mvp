@@ -6,13 +6,10 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.LinearLayout;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -49,10 +46,10 @@ public class MainActivity extends AppCompatActivity {
         mapView = findViewById(R.id.main_map_view);
         mapView.onCreate(savedInstanceState);
 
-        LinearLayout layout = findViewById(R.id.bottom_sheet);
+        //LinearLayout layout = findViewById(R.id.bottom_sheet);
         fab = findViewById(R.id.map_fab);
 
-        sheetBehavior = BottomSheetBehavior.from(layout);
+        /*sheetBehavior = BottomSheetBehavior.from(layout);
 
         sheetBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
             @Override
@@ -77,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
             public void onSlide(@NonNull View bottomSheet, float slideOffset) {
             }
 
-        });
+        });*/
 
         StubDataUtils.generateDemoRoutes(this, routes); //TODO: Remove in prod
 
@@ -126,18 +123,18 @@ public class MainActivity extends AppCompatActivity {
             previous = place.getLatLng();
         }
 
-        map.setOnMarkerClickListener(marker -> {
+        /*map.setOnMarkerClickListener(marker -> {
             map.moveCamera(CameraUpdateFactory.newLatLng(marker.getPosition()));
             if (sheetBehavior.getState() != BottomSheetBehavior.STATE_EXPANDED) {
                 sheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
             } else {
                 sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
             }
-            /*Toast.makeText(getContext(), "Снизу появляется карточка с краткой информацией о месте: " +
+            *//*Toast.makeText(getContext(), "Снизу появляется карточка с краткой информацией о месте: " +
                     "Мини-фото, название, рейтинг, принадлежность к категории в виде соответствующей иконки.", Toast.LENGTH_LONG).show();
-            */
+            *//*
             return false;
-        });
+        });*/
 
     }
 

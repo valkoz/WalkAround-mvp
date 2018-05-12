@@ -3,4 +3,5 @@
     <dimen name="base_vertical_padding">20dp</dimen>
     <dimen name="normal_drawable_padding">20dp</dimen>
     <dimen name="small_drawable_padding">10dp</dimen>
+    <dimen name="bottom_card_size">250dp</dimen>
 </resources>
