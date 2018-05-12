@@ -8,10 +8,9 @@
 
     <fragment
         android:id="@+id/place_autocomplete"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
-        />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <fragment
         android:id="@+id/map"
@@ -23,24 +22,24 @@
     <LinearLayout
         android:id="@+id/choose_start_point_button_layout"
         android:layout_width="match_parent"
-        android:visibility="invisible"
         android:layout_height="100dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
+        android:background="@drawable/gradient"
         android:gravity="center"
-        android:background="@drawable/gradient">
+        android:visibility="invisible">
 
         <Button
             android:id="@+id/go_next_button1"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:text="@string/next"
-            android:textSize="16sp"
-            android:textAllCaps="false"
-            android:fontFamily="@font/montserrat_bold"
             android:background="@drawable/buttonw"
+            android:drawableEnd="@drawable/ic_arrow_p"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@string/next"
+            android:textAllCaps="false"
             android:textColor="@color/colorPrimary"
-            android:drawableEnd="@drawable/ic_arrow_p" />
+            android:textSize="16sp" />
     </LinearLayout>
 
 

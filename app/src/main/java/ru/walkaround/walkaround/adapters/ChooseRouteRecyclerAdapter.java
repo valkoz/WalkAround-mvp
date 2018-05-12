@@ -84,8 +84,11 @@ public class ChooseRouteRecyclerAdapter extends
             placeNames.add(p.getName());
         }
         holder.firstPlace.setText(placeNames.get(0));
+        holder.firstPlace.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_museum, 0, 0, 0);
         holder.secondPlace.setText(placeNames.get(1));
+        holder.secondPlace.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_religion, 0, 0, 0);
         holder.thirdPlace.setText(placeNames.get(2));
+        holder.thirdPlace.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_entertainment, 0, 0, 0);
 
         //holder.imageView.setImageResource(c.getImage());
         //USAGE: glide lib: https://github.com/bumptech/glide

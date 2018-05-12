@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_card"
     android:layout_width="wrap_content"
     android:layout_height="@dimen/bottom_card_size"
-    android:id="@+id/bottom_card"
-    android:paddingStart="@dimen/base_vertical_padding"
+    android:paddingBottom="16dp"
     android:paddingEnd="84dp"
-    android:paddingTop="16dp"
-    android:paddingBottom="16dp">
+    android:paddingStart="@dimen/base_vertical_padding"
+    android:paddingTop="16dp">
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
@@ -17,24 +17,25 @@
         card_view:cardCornerRadius="30dp">
 
         <RelativeLayout
-            android:layout_margin="20dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_margin="20dp">
 
             <ImageView
                 android:id="@+id/bottom_card_image"
                 android:layout_width="192dp"
                 android:layout_height="108dp"
-                tools:src="@drawable/park"
                 android:contentDescription="@string/picture"
-                android:scaleType="centerCrop" />
+                android:scaleType="centerCrop"
+                tools:src="@drawable/drawable_park" />
 
             <ImageView
-                android:layout_marginTop="10dp"
-                android:layout_toStartOf="@id/choose_route_image"
-                android:layout_alignParentEnd="true"
+                android:id="@+id/bottom_card_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="10dp"
+                android:layout_toStartOf="@id/choose_route_image"
                 tools:src="@drawable/ic_food" />
 
             <LinearLayout
@@ -45,28 +46,28 @@
 
                 <TextView
                     android:id="@+id/bottom_card_text_primary"
-                    android:paddingTop="5dp"
-                    tools:text="Бар Гадкий Койот"
-                    android:textSize="18sp"
-                    android:textColor="@color/textColor"
-                    android:maxLines="1"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:paddingTop="5dp"
+                    android:textColor="@color/textColor"
+                    android:textSize="18sp"
+                    tools:text="Бар Гадкий Койот" />
 
                 <TextView
                     android:id="@+id/bottom_card_text_secondary"
-                    tools:text="Красная пл., 3, Москва, 109012"
-                    android:fontFamily="@font/montserrat_medium"
-                    android:textSize="12sp"
-                    android:maxLines="1"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:maxLines="1"
+                    android:textSize="12sp"
+                    tools:text="Красная пл., 3, Москва, 109012" />
 
                 <RatingBar
-                    android:paddingTop="5dp"
                     style="?android:attr/ratingBarStyleSmall"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp" />
 
 
             </LinearLayout>

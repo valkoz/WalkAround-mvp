@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView bottomCardPrimaryText;
     private TextView bottomCardSecondaryText;
     private ImageView bottomCardImageView;
+    private ImageView bottomCardIcon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
         bottomCardPrimaryText = findViewById(R.id.bottom_card_text_primary);
         bottomCardSecondaryText = findViewById(R.id.bottom_card_text_secondary);
         bottomCardImageView = findViewById(R.id.bottom_card_image);
+        bottomCardIcon = findViewById(R.id.bottom_card_icon);
 
         StubDataUtils.generateDemoRoutes(this, routes); //TODO: Remove in prod
 
@@ -133,6 +135,8 @@ public class MainActivity extends AppCompatActivity {
                             .load(place.getImage())
                             .apply(requestOptions)
                             .into(bottomCardImageView);
+
+                    bottomCardIcon.setImageResource(R.drawable.ic_food);
 
                     bottomCardSecondaryText.setText("Улица ебучих шакалов, 666");
                 }

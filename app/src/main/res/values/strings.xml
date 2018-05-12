@@ -5,4 +5,9 @@
     <string name="title_activity_category">Выберете категории: </string>
     <string name="picture">Picture</string>
     <string name="routes">Маршруты</string>
+    <string name="route_time">Длительность маршрута:</string>
+    <string name="route_distance">Протяженность маршрута:</string>
+    <string name="change_category">Смена категорий</string>
+    <string name="clip_place">Закрепление мест</string>
+    <string name="refresh_routes">Обновить маршрут</string>
 </resources>

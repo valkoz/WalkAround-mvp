@@ -1,8 +1,8 @@
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".activities.MainActivity">
 
     <com.google.android.gms.maps.MapView
@@ -10,14 +10,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <!-- Adding bottom sheet after main content -->
-    <!-- <include layout="@layout/bottom_sheet" />-->
     <include
-        android:visibility="invisible"
         layout="@layout/bottom_card"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/bottom_card_size"
-        android:layout_gravity="bottom" />
+        android:layout_gravity="bottom"
+        android:visibility="invisible"
+        tools:visibility="visible" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/map_fab"

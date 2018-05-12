@@ -3,34 +3,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingStart="50dp"
-    android:paddingEnd="50dp"
-    android:paddingTop="150dp"
-    android:gravity="center_horizontal"
     android:background="@drawable/background_start_drawable"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingEnd="50dp"
+    android:paddingStart="50dp"
+    android:paddingTop="150dp"
     tools:context=".activities.ChooseCityActivity">
 
     <TextView
-        android:text="@string/choose_city"
-        android:fontFamily="@font/montserrat_bold"
-        android:textSize="26sp"
-        android:textColor="@color/colorWhite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        />
+        android:fontFamily="@font/montserrat_bold"
+        android:text="@string/choose_city"
+        android:textColor="@color/colorWhite"
+        android:textSize="26sp" />
 
     <AutoCompleteTextView
         android:id="@+id/autocomplete_city"
-        android:textColor="@color/colorWhite"
-        android:textSize="20sp"
-        android:fontFamily="@font/montserrat_medium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:drawableStart="@drawable/ic_map"
+        android:fontFamily="@font/montserrat_medium"
         android:inputType="textAutoComplete"
         android:singleLine="true"
-        android:drawableStart="@drawable/ic_map" />
+        android:textColor="@color/colorWhite"
+        android:textSize="20sp" />
 
     <Button
 
@@ -38,13 +37,13 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
-        android:visibility="invisible"
-        android:text="@string/next"
-        android:textSize="16sp"
-        android:textAllCaps="false"
-        android:fontFamily="@font/montserrat_bold"
-        android:textColor="@color/colorPrimary"
         android:background="@drawable/buttonw"
-        android:drawableEnd="@drawable/ic_arrow_p" />
+        android:drawableEnd="@drawable/ic_arrow_p"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="@string/next"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16sp"
+        android:visibility="invisible" />
 
 </LinearLayout>

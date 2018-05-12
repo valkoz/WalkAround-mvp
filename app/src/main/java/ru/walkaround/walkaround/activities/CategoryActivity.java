@@ -22,7 +22,7 @@ import ru.walkaround.walkaround.model.Category;
 
 public class CategoryActivity extends AppCompatActivity {
 
-    private final List<String> categoryNames = Arrays.asList("Museum", "Park", "Bar", "Sport");
+    private final List<String> categoryNames = Arrays.asList("Entertainment", "Food", "Museum", "Park", "Religion", "Shop");
 
     private Button button;
 
@@ -41,7 +41,7 @@ public class CategoryActivity extends AppCompatActivity {
 
         for (String s: categoryNames) {
             Category c = new Category(s);
-            c.setImage(getResources().getIdentifier(s.toLowerCase(), "drawable", getPackageName()));
+            c.setImage(getResources().getIdentifier("drawable_" + s.toLowerCase(), "drawable", getPackageName()));
             categories.add(c);
         }
 

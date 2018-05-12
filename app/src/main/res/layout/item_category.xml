@@ -2,9 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="150dp"
+    xmlns:tools="http://schemas.android.com/tools"
     android:paddingTop="10dp"
-    android:paddingBottom="10dp"
-    >
+    android:paddingBottom="10dp">
 
     <ImageView
         android:id="@+id/image_category"
@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:contentDescription="@string/picture"
         android:scaleType="centerCrop"
-        />
+        tools:src="@sample/sample.json/categories/drawable" />
 
     <TextView
         android:id="@+id/label"
@@ -24,6 +24,7 @@
         android:textColor="@color/colorAccent"
         android:fontFamily="@font/montserrat_bold"
         android:textAlignment="center"
-        android:textSize="26sp" />
+        android:textSize="26sp"
+        tools:text="@sample/sample.json/categories/name" />
 
 </RelativeLayout>

@@ -3,113 +3,113 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ru.walkaround.walkaround.activities.ChangeOptionsActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context="ru.walkaround.walkaround.activities.ChangeOptionsActivity">
 
     <TextView
-        android:paddingTop="40dp"
-        android:layout_marginStart="@dimen/base_vertical_padding"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/base_vertical_padding"
-        android:text="Длительность маршрута: "
+        android:layout_marginStart="@dimen/base_vertical_padding"
         android:fontFamily="@font/montserrat_bold"
-        android:textSize="18sp"
+        android:paddingTop="40dp"
+        android:text="@string/route_time"
         android:textColor="@color/textColor"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:textSize="18sp" />
 
     <TextView
-        android:text="3 часа 3 минуты"
-        android:layout_marginStart="@dimen/base_vertical_padding"
-        android:layout_marginEnd="@dimen/base_vertical_padding"
-        android:fontFamily="@font/montserrat_medium"
-        android:textSize="12sp"
-        android:textColor="@color/secondaryTextColor"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/base_vertical_padding"
+        android:layout_marginStart="@dimen/base_vertical_padding"
+        android:fontFamily="@font/montserrat_medium"
+        android:textColor="@color/secondaryTextColor"
+        android:textSize="12sp"
+        tools:text="3 часа 3 минуты" />
 
     <SeekBar
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
         android:layout_width="match_parent"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
         android:layout_height="40dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        android:max="16"
         android:progressTint="@color/colorPrimary"
         android:thumbTint="@color/colorPrimary"
-        style="@style/Widget.AppCompat.SeekBar.Discrete"
-        android:max="16"
-        android:progress="3" />
+        tools:progress="3" />
 
     <TextView
-        android:paddingTop="20dp"
-        android:layout_marginStart="@dimen/base_vertical_padding"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/base_vertical_padding"
-        android:text="Протяженность маршрута: "
+        android:layout_marginStart="@dimen/base_vertical_padding"
         android:fontFamily="@font/montserrat_bold"
-        android:textSize="18sp"
+        android:paddingTop="20dp"
+        android:text="@string/route_distance"
         android:textColor="@color/textColor"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:textSize="18sp" />
 
     <TextView
-        android:text="6 километров"
-        android:layout_marginStart="@dimen/base_vertical_padding"
-        android:layout_marginEnd="@dimen/base_vertical_padding"
-        android:fontFamily="@font/montserrat_medium"
-        android:textSize="12sp"
-        android:textColor="@color/secondaryTextColor"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/base_vertical_padding"
+        android:layout_marginStart="@dimen/base_vertical_padding"
+        android:fontFamily="@font/montserrat_medium"
+        android:textColor="@color/secondaryTextColor"
+        android:textSize="12sp"
+        tools:text="6 километров" />
 
     <SeekBar
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
         style="@style/Widget.AppCompat.SeekBar.Discrete"
         android:layout_width="match_parent"
         android:layout_height="40dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
         android:max="16"
-        android:progress="3"
         android:progressTint="@color/colorPrimary"
-        android:thumbTint="@color/colorPrimary" />
+        android:thumbTint="@color/colorPrimary"
+        tools:progress="3" />
 
     <Button
-        android:layout_marginTop="30dp"
-        android:layout_gravity="center"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:text="Смена категорий"
-        android:textSize="16sp"
-        android:textAllCaps="false"
-        android:fontFamily="@font/montserrat_bold"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
         android:background="@drawable/button"
-        android:textColor="@color/colorAccent" />
+        android:fontFamily="@font/montserrat_bold"
+        android:text="@string/change_category"
+        android:textAllCaps="false"
+        android:textColor="@color/colorAccent"
+        android:textSize="16sp" />
 
     <Button
-        android:layout_marginTop="30dp"
-        android:layout_gravity="center"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:text="Закрепление мест"
-        android:textSize="16sp"
-        android:textAllCaps="false"
-        android:fontFamily="@font/montserrat_bold"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
         android:background="@drawable/button"
-        android:textColor="@color/colorAccent" />
+        android:fontFamily="@font/montserrat_bold"
+        android:text="@string/clip_place"
+        android:textAllCaps="false"
+        android:textColor="@color/colorAccent"
+        android:textSize="16sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_marginTop="35dp"
-        android:gravity="center"
-        android:background="@drawable/gradient">
+        android:background="@drawable/gradient"
+        android:gravity="center">
 
         <Button
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:text="Обновить маршрут"
-            android:textSize="16sp"
-            android:textAllCaps="false"
-            android:fontFamily="@font/montserrat_bold"
             android:background="@drawable/buttonw"
-            android:textColor="@color/colorPrimary" />
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@string/refresh_routes"
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp" />
     </LinearLayout>
 
 </LinearLayout>
