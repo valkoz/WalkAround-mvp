@@ -10,5 +10,5 @@
     <color name="gradient_start_transparent">#BBFFC266</color>
     <color name="gradient_end_transparent">#BBFF2950</color>
     <color name="colorWhite">#FFFFFF</color>
-    <color name="background">#eeeeee</color>
+    <color name="background">#FAFAFA</color>
 </resources>
