@@ -64,10 +64,14 @@
                     tools:text="Красная пл., 3, Москва, 109012" />
 
                 <RatingBar
+                    android:id="@+id/bottom_card_rating"
                     style="?android:attr/ratingBarStyleSmall"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingTop="5dp" />
+                    android:paddingTop="5dp"
+                    android:progressBackgroundTint="@color/gradient_start"
+                    android:progressTint="@color/gradient_start"
+                    tools:rating="3" />
 
 
             </LinearLayout>

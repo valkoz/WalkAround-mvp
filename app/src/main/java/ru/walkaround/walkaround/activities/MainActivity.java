@@ -11,6 +11,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -51,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView bottomCardSecondaryText;
     private ImageView bottomCardImageView;
     private ImageView bottomCardIcon;
+    private RatingBar ratingBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
         bottomCardSecondaryText = findViewById(R.id.bottom_card_text_secondary);
         bottomCardImageView = findViewById(R.id.bottom_card_image);
         bottomCardIcon = findViewById(R.id.bottom_card_icon);
+        ratingBar = findViewById(R.id.bottom_card_rating);
 
         StubDataUtils.generateDemoRoutes(this, routes); //TODO: Remove in prod
 
@@ -136,9 +139,9 @@ public class MainActivity extends AppCompatActivity {
                             .apply(requestOptions)
                             .into(bottomCardImageView);
 
-                    bottomCardIcon.setImageResource(R.drawable.ic_food);
-
-                    bottomCardSecondaryText.setText("Улица ебучих шакалов, 666");
+                    bottomCardIcon.setImageResource(place.getType());
+                    bottomCardSecondaryText.setText(place.getAddress());
+                    ratingBar.setRating(place.getRating());
                 }
             }
 
