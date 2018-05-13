@@ -18,6 +18,7 @@
         android:textSize="18sp" />
 
     <TextView
+        android:text="4 часа"
         android:id="@+id/change_options_textview_time"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -29,6 +30,7 @@
         tools:text="3 часа 3 минуты" />
 
     <SeekBar
+        android:progress="4"
         android:id="@+id/change_options_seekbar_time"
         style="@style/SeekBarWithoutSteps"
         android:layout_width="match_parent"
@@ -53,6 +55,7 @@
         android:textSize="18sp" />
 
     <TextView
+        android:text="3 километра"
         android:id="@+id/change_options_textview_distance"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -64,6 +67,7 @@
         tools:text="6 километров" />
 
     <SeekBar
+        android:progress="3"
         android:id="@+id/change_options_seekbar_distance"
         style="@style/SeekBarWithoutSteps"
         android:layout_width="match_parent"

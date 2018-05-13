@@ -101,7 +101,8 @@ public class MainActivity extends AppCompatActivity {
             MarkerOptions markerOptions = new MarkerOptions()
                     .position(place.getLatLng())
                     .title(place.getName())
-                    .icon(bitmapDescriptorFromVector(this, R.drawable.ic_map));
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
+            //.icon(bitmapDescriptorFromVector(this, R.drawable.ic_map));
 
             Marker marker = map.addMarker(markerOptions);
             marker.hideInfoWindow();

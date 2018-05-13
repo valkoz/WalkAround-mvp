@@ -9,7 +9,6 @@ import android.support.v7.widget.RecyclerView;
 import android.transition.Slide;
 import android.view.Gravity;
 import android.widget.Button;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -45,9 +44,11 @@ public class CategoryActivity extends AppCompatActivity {
             categories.add(c);
         }
 
-        RecyclerViewClickListener listener =
+        /*RecyclerViewClickListener listener =
                 (view, position) ->
-                        Toast.makeText(this, "Position " + position, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Position " + position, Toast.LENGTH_SHORT).show();*/
+        RecyclerViewClickListener listener = (view, position) -> {
+        };
 
         CategoryRecyclerAdapter categoryRecyclerAdapter = new CategoryRecyclerAdapter(categories, this, listener);
         recyclerView.setHasFixedSize(true);

@@ -8,7 +8,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.transition.Slide;
 import android.view.Gravity;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +33,7 @@ public class ChooseRouteActivity extends AppCompatActivity {
         RecyclerView recyclerView = findViewById(R.id.choose_route_recycler_view);
 
         RecyclerViewClickListener listener = (view, position) -> {
-            Toast.makeText(this, "Position " + position, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Position " + position, Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, MainActivity.class), ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
         };
 
