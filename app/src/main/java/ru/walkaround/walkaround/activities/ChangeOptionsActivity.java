@@ -1,7 +1,9 @@
 package ru.walkaround.walkaround.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -13,6 +15,7 @@ public class ChangeOptionsActivity extends AppCompatActivity {
     private SeekBar distanceSeekBar;
     private TextView time;
     private TextView distance;
+    private Button button;
 
 
     @Override
@@ -25,6 +28,7 @@ public class ChangeOptionsActivity extends AppCompatActivity {
         distanceSeekBar = findViewById(R.id.change_options_seekbar_distance);
         time = findViewById(R.id.change_options_textview_time);
         distance = findViewById(R.id.change_options_textview_distance);
+        button = findViewById(R.id.change_options_refresh_routes);
 
         timeSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -69,6 +73,12 @@ public class ChangeOptionsActivity extends AppCompatActivity {
             public void onStopTrackingTouch(SeekBar seekBar) {
 
             }
+        });
+
+        button.setOnClickListener(v -> {
+            Intent intent = new Intent(ChangeOptionsActivity.this, MainActivity.class);
+            intent.putExtra("flag", true);
+            startActivity(intent);
         });
     }
 }

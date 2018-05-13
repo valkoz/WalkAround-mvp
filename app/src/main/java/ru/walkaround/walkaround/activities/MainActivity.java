@@ -74,23 +74,17 @@ public class MainActivity extends AppCompatActivity {
 
         boolean flag = getIntent().getBooleanExtra("flag", false);
         if (!flag) {
-            mapView.getMapAsync(this::setUpMap);
+            mapView.getMapAsync(googleMap -> setUpMap(googleMap, 0));
         } else {
-            mapView.getMapAsync(this::setUpMapRerouted);
+            mapView.getMapAsync(googleMap -> setUpMap(googleMap, 1));
         }
 
         fab.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, ChangeOptionsActivity.class)));
     }
 
-    private void setUpMapRerouted(GoogleMap map) {
-
-    }
-
-    private void setUpMap(GoogleMap map) {
+    private void setUpMap(GoogleMap map, int routeIndex) {
         this.map = map;
-
-        Route chosen = routes.get(0);
-        chosenPlaces = chosen.getPlaces();
+        chosenPlaces = routes.get(routeIndex).getPlaces();
 
         CameraUpdate center =
                 CameraUpdateFactory.newLatLng(chosenPlaces.get(0).getLatLng());
