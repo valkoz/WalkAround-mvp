@@ -56,7 +56,7 @@ public class ChooseCityActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_city);
 
-        getWindow().setExitTransition(new Slide(Gravity.START));
+        getWindow().setExitTransition(new Slide(Gravity.LEFT));
 
         Log.i("ChooseCityActivity", "started");
 

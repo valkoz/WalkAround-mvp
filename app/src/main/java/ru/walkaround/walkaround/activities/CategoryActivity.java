@@ -31,7 +31,7 @@ public class CategoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
 
-        getWindow().setExitTransition(new Slide(Gravity.START));
+        getWindow().setExitTransition(new Slide(Gravity.LEFT));
         //getWindow().setEnterTransition(new Slide(Gravity.END));
 
         RecyclerView recyclerView = findViewById(R.id.categories_list);

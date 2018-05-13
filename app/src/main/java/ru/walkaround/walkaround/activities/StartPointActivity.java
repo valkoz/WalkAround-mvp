@@ -46,7 +46,7 @@ public class StartPointActivity extends AppCompatActivity implements OnMapReadyC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_start_point);
 
-        getWindow().setExitTransition(new Slide(Gravity.START));
+        getWindow().setExitTransition(new Slide(Gravity.LEFT));
         //getWindow().setEnterTransition(new Slide(Gravity.END));
 
         goNext = findViewById(R.id.go_next_button1);

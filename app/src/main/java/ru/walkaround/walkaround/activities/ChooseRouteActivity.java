@@ -28,7 +28,7 @@ public class ChooseRouteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_route);
 
-        getWindow().setExitTransition(new Slide(Gravity.START));
+        getWindow().setExitTransition(new Slide(Gravity.LEFT));
         //getWindow().setEnterTransition(new Slide(Gravity.END));
 
         RecyclerView recyclerView = findViewById(R.id.choose_route_recycler_view);
