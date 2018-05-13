@@ -123,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         map.setOnMarkerClickListener(marker -> {
-            map.moveCamera(CameraUpdateFactory.newLatLng(marker.getPosition()));
+            map.animateCamera(CameraUpdateFactory.newLatLng(marker.getPosition()));
             marker.hideInfoWindow();
             bottomCard.setVisibility(View.VISIBLE);
             bottomCardPrimaryText.setText(marker.getTitle());
