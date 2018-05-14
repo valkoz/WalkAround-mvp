@@ -56,6 +56,7 @@ public class StartPointActivity extends AppCompatActivity implements OnMapReadyC
         double lng = getIntent().getDoubleExtra(IntentUtils.LONGITUDE, 0);
         double lat = getIntent().getDoubleExtra(IntentUtils.LATITUDE, 0);
         initialMarkerPosition = new LatLng(lat, lng);
+        initialMarkerPosition = new LatLng(55.757035, 37.615351); //TODO: remove. Only for demo video
         isLocatedNearby = getIntent().getBooleanExtra(IntentUtils.IS_LOCATIONS_NEARBY, false);
 
         placeAutoComplete = (PlaceAutocompleteFragment) getFragmentManager().findFragmentById(R.id.place_autocomplete);

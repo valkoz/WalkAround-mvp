@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="150dp"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:paddingTop="10dp"
-    android:paddingBottom="10dp">
+    android:paddingBottom="10dp"
+    android:paddingTop="10dp">
 
     <ImageView
         android:id="@+id/image_category"
@@ -20,11 +20,18 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:text="@+id/label"
-        android:textColor="@color/colorAccent"
         android:fontFamily="@font/montserrat_bold"
+        android:text="@+id/label"
         android:textAlignment="center"
+        android:textColor="@color/colorAccent"
         android:textSize="26sp"
         tools:text="@sample/sample.json/categories/name" />
+
+    <CheckBox
+        android:id="@+id/category_check_box"
+        style="?android:attr/starStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -36,12 +37,14 @@ public class CategoryRecyclerAdapter extends
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView countryText;
         public ImageView imageView;
+        public CheckBox checkBox;
 
         private RecyclerViewClickListener listener;
 
         public MyViewHolder(View view, RecyclerViewClickListener listener) {
             super(view);
             countryText = view.findViewById(R.id.label);
+            checkBox = view.findViewById(R.id.category_check_box);
             imageView = view.findViewById(R.id.image_category);
 
             this.listener = listener;
@@ -53,9 +56,11 @@ public class CategoryRecyclerAdapter extends
 
             if (imageView.isSelected()) {
                 imageView.setSelected(false);
+                checkBox.setChecked(false);
                 imageView.setImageAlpha(TRANSPERENT);
             } else {
                 imageView.setSelected(true);
+                checkBox.setChecked(true);
                 imageView.setImageAlpha(OPAQUE);
             }
             listener.onClick(v, getAdapterPosition());
