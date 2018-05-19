@@ -131,8 +131,8 @@ public class StubDataUtils {
         List<Place> secondPlaces = Arrays.asList(ohotniy, starbucks, bolshoyTheatre, tsum, varienik);
         List<Place> thirdPlaces = Arrays.asList(gmii, arbat, museon);
 
-        routes.add(new Route("3:50", "10 км", "1000 руб", firstPlaces));
-        routes.add(new Route("1:30", "5.6 км", "1500 руб", secondPlaces));
+        routes.add(new Route("3:50", "2 км", "2500 руб", firstPlaces));
+        routes.add(new Route("4:30", "3.1 км", "4000 руб", secondPlaces));
         routes.add(new Route("2:20", "6.2 км", "700 руб", thirdPlaces));
 
     }
