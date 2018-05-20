@@ -9,7 +9,7 @@
     android:paddingEnd="50dp"
     android:paddingStart="50dp"
     android:paddingTop="150dp"
-    tools:context=".activities.ChooseCityActivity">
+    tools:context=".fragments.ChooseCityFragment">
 
     <TextView
         android:layout_width="wrap_content"

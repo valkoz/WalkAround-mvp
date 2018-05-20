@@ -1,16 +1,16 @@
-package ru.walkaround.walkaround.activities;
+package ru.walkaround.walkaround.fragments;
 
-import android.app.ActivityOptions;
 import android.content.Context;
-import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
-import android.transition.Slide;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.view.ContextThemeWrapper;
 import android.util.Log;
-import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
@@ -32,80 +32,94 @@ import ru.walkaround.walkaround.IntentUtils;
 import ru.walkaround.walkaround.R;
 import ru.walkaround.walkaround.adapters.PlaceAutocompleteAdapter;
 
-public class ChooseCityActivity extends AppCompatActivity {
+public class ChooseCityFragment extends Fragment {
 
-    public static final String TAG = "SampleActivityBase";
+    private static final String TAG = "ChooseCityFragment";
+    private static final String LAT = "lat";
+    private static final String LNG = "lng";
+
     public static final int MAX_DISTANCE_TO_CITY_CENTER = 15000;
 
+    private LatLng latLng;
     protected GeoDataClient mGeoDataClient;
-
     private PlaceAutocompleteAdapter mAdapter;
-
     private AutoCompleteTextView mAutocompleteView;
-
-    private LatLngBounds bounds;
-
     private Button goNext;
-
     private Location userLocation;
-
     private Location cityLocation;
 
+    public ChooseCityFragment() {
+    }
+
+    public static ChooseCityFragment newInstance(double lat, double lng) {
+        ChooseCityFragment fragment = new ChooseCityFragment();
+        Bundle args = new Bundle();
+        args.putDouble(LAT, lat);
+        args.putDouble(LNG, lng);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_choose_city);
+        if (getArguments() != null) {
+            latLng = new LatLng(getArguments().getDouble(LAT), getArguments().getDouble(LNG));
+        }
+    }
 
-        getWindow().setExitTransition(new Slide(Gravity.LEFT));
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
 
-        Log.i("ChooseCityActivity", "started");
+        final Context contextThemeWrapper = new ContextThemeWrapper(getActivity(), R.style.NoActionBarTransparent);
+        LayoutInflater localInflater = inflater.cloneInContext(contextThemeWrapper);
+        View view = localInflater.inflate(R.layout.fragment_choose_city, container, false);
 
-        double lat = getIntent().getDoubleExtra(IntentUtils.LATITUDE, 0);
-        double lng = getIntent().getDoubleExtra(IntentUtils.LONGITUDE, 0);
-
-        Log.i(TAG, String.valueOf(lat));
-        Log.i(TAG, String.valueOf(lng));
+        mGeoDataClient = Places.getGeoDataClient(getActivity());
 
         userLocation = new Location("userLocation");
-        userLocation.setLatitude(lat);
-        userLocation.setLongitude(lng);
+        userLocation.setLatitude(latLng.latitude);
+        userLocation.setLongitude(latLng.longitude);
 
-        bounds = new LatLngBounds(new LatLng(lat, lng), new LatLng(lat, lng));
-
-
-        mGeoDataClient = Places.getGeoDataClient(this);
-
-        mAutocompleteView = findViewById(R.id.autocomplete_city);
-
-
+        mAutocompleteView = view.findViewById(R.id.autocomplete_city);
         mAutocompleteView.setOnItemClickListener(mAutocompleteClickListener);
-
         AutocompleteFilter filter = new AutocompleteFilter.Builder()
                 .setTypeFilter(AutocompleteFilter.TYPE_FILTER_CITIES)
                 .build();
-
-        mAdapter = new PlaceAutocompleteAdapter(this, mGeoDataClient, bounds, filter);
+        mAdapter = new PlaceAutocompleteAdapter(getContext(), mGeoDataClient, new LatLngBounds(latLng, latLng), filter);
         mAutocompleteView.setAdapter(mAdapter);
 
-        goNext = findViewById(R.id.go_next_button);
+        goNext = view.findViewById(R.id.go_next_button);
         goNext.setOnClickListener(v -> {
-            Intent intent = new Intent(ChooseCityActivity.this, StartPointActivity.class);
 
             Log.i("OnClick", String.valueOf(userLocation.distanceTo(cityLocation)));
 
+            Bundle bundle = new Bundle();
+
             if (userLocation.distanceTo(cityLocation) < MAX_DISTANCE_TO_CITY_CENTER) {
-                intent.putExtra(IntentUtils.IS_LOCATIONS_NEARBY, true);
-                intent.putExtra(IntentUtils.LONGITUDE, userLocation.getLongitude());
-                intent.putExtra(IntentUtils.LATITUDE, userLocation.getLatitude());
+                bundle.putBoolean(IntentUtils.IS_LOCATIONS_NEARBY, true);
+                bundle.putDouble(IntentUtils.LONGITUDE, latLng.longitude);
+                bundle.putDouble(IntentUtils.LATITUDE, latLng.latitude);
             } else {
-                intent.putExtra(IntentUtils.IS_LOCATIONS_NEARBY, false);
-                intent.putExtra(IntentUtils.LONGITUDE, cityLocation.getLongitude());
-                intent.putExtra(IntentUtils.LATITUDE, cityLocation.getLatitude());
+                bundle.putBoolean(IntentUtils.IS_LOCATIONS_NEARBY, false);
+                bundle.putDouble(IntentUtils.LONGITUDE, cityLocation.getLongitude());
+                bundle.putDouble(IntentUtils.LATITUDE, cityLocation.getLatitude());
             }
 
-            startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+            ChooseStartPointFragment chooseStartPointFragment = ChooseStartPointFragment.newInstance();
+            chooseStartPointFragment.setArguments(bundle);
+            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+            transaction.setCustomAnimations(R.anim.in_from_right, R.anim.out_to_left, android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+            transaction.add(R.id.fragment_content, chooseStartPointFragment);
+            transaction.hide(ChooseCityFragment.this);
+            transaction.addToBackStack(null);
+            transaction.commit();
+
         });
 
+
+        return view;
     }
 
     private AdapterView.OnItemClickListener mAutocompleteClickListener
@@ -132,17 +146,6 @@ public class ChooseCityActivity extends AppCompatActivity {
         }
     };
 
-    private void hideKeyboard() {
-        View view = getCurrentFocus();
-        if (view != null) {
-            InputMethodManager inputManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-            if (inputManager != null) {
-                inputManager.hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-            }
-
-        }
-    }
-
     private OnCompleteListener<PlaceBufferResponse> mUpdatePlaceDetailsCallback
             = new OnCompleteListener<PlaceBufferResponse>() {
         @Override
@@ -167,4 +170,14 @@ public class ChooseCityActivity extends AppCompatActivity {
         }
     };
 
+    public void hideKeyboard() {
+        View view = getActivity().getCurrentFocus();
+        if (view != null) {
+            InputMethodManager inputManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+            if (inputManager != null) {
+                inputManager.hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+            }
+
+        }
+    }
 }

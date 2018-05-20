@@ -1,20 +1,21 @@
-package ru.walkaround.walkaround.activities;
+package ru.walkaround.walkaround.fragments;
 
-import android.app.ActivityOptions;
-import android.content.Intent;
+import android.content.Context;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.transition.Slide;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.view.ContextThemeWrapper;
 import android.util.Log;
-import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.Place;
-import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
 import com.google.android.gms.location.places.ui.PlaceSelectionListener;
+import com.google.android.gms.location.places.ui.SupportPlaceAutocompleteFragment;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -28,10 +29,10 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import ru.walkaround.walkaround.IntentUtils;
 import ru.walkaround.walkaround.R;
 
-public class StartPointActivity extends AppCompatActivity implements OnMapReadyCallback {
+public class ChooseStartPointFragment extends Fragment implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-    private PlaceAutocompleteFragment placeAutoComplete;
+    private SupportPlaceAutocompleteFragment placeAutoComplete;
     private Marker marker;
     private LinearLayout ll;
 
@@ -40,26 +41,36 @@ public class StartPointActivity extends AppCompatActivity implements OnMapReadyC
 
     private Button goNext;
 
+    public ChooseStartPointFragment() {
+    }
+
+    public static ChooseStartPointFragment newInstance() {
+        ChooseStartPointFragment fragment = new ChooseStartPointFragment();
+        Bundle args = new Bundle();
+        fragment.setArguments(args);
+        return fragment;
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_choose_start_point);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        final Context contextThemeWrapper = new ContextThemeWrapper(getActivity(), R.style.NoActionBar);
+        LayoutInflater localInflater = inflater.cloneInContext(contextThemeWrapper);
+        View fragmentView = localInflater.inflate(R.layout.fragment_choose_start_point, container, false);
 
-        getWindow().setExitTransition(new Slide(Gravity.LEFT));
-        //getWindow().setEnterTransition(new Slide(Gravity.END));
+        Bundle inputBundle = getArguments();
 
-        goNext = findViewById(R.id.go_next_button1);
-        ll = findViewById(R.id.choose_start_point_button_layout);
+        goNext = fragmentView.findViewById(R.id.go_next_button1);
+        ll = fragmentView.findViewById(R.id.choose_start_point_button_layout);
 
 
-        double lng = getIntent().getDoubleExtra(IntentUtils.LONGITUDE, 0);
-        double lat = getIntent().getDoubleExtra(IntentUtils.LATITUDE, 0);
+        double lng = inputBundle.getDouble(IntentUtils.LONGITUDE, 0);
+        double lat = inputBundle.getDouble(IntentUtils.LATITUDE, 0);
         initialMarkerPosition = new LatLng(lat, lng);
         initialMarkerPosition = new LatLng(55.757035, 37.615351); //TODO: remove. Only for demo video
-        isLocatedNearby = getIntent().getBooleanExtra(IntentUtils.IS_LOCATIONS_NEARBY, false);
+        isLocatedNearby = inputBundle.getBoolean(IntentUtils.IS_LOCATIONS_NEARBY, false);
 
-        placeAutoComplete = (PlaceAutocompleteFragment) getFragmentManager().findFragmentById(R.id.place_autocomplete);
+        placeAutoComplete = (SupportPlaceAutocompleteFragment) getChildFragmentManager().findFragmentById(R.id.place_autocomplete);
         placeAutoComplete.setHint("Выберите начальную точку");
         placeAutoComplete.setBoundsBias(new LatLngBounds(new LatLng(lat, lng), new LatLng(lat, lng)));
         placeAutoComplete.setOnPlaceSelectedListener(new PlaceSelectionListener() {
@@ -77,21 +88,28 @@ public class StartPointActivity extends AppCompatActivity implements OnMapReadyC
             }
         });
 
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+        SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
         goNext.setOnClickListener((view) -> {
-            Intent intent = new Intent(StartPointActivity.this, CategoryActivity.class);
-
             Log.i("OnClick", "GoNext");
 
-            intent.putExtra(IntentUtils.LONGITUDE, marker.getPosition().longitude);
-            intent.putExtra(IntentUtils.LATITUDE, marker.getPosition().latitude);
+            Bundle bundle = new Bundle();
+            bundle.putDouble(IntentUtils.LONGITUDE, marker.getPosition().longitude);
+            bundle.putDouble(IntentUtils.LATITUDE, marker.getPosition().latitude);
 
-
-            startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+            ChooseCategoriesFragment chooseCategoriesFragment = ChooseCategoriesFragment.newInstance();
+            chooseCategoriesFragment.setArguments(bundle);
+            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+            transaction.setCustomAnimations(R.anim.in_from_right, R.anim.out_to_left, android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+            transaction.add(R.id.fragment_content, chooseCategoriesFragment);
+            transaction.hide(ChooseStartPointFragment.this);
+            transaction.addToBackStack(null);
+            transaction.commit();
         });
+
+        return fragmentView;
     }
 
     @Override
@@ -115,8 +133,7 @@ public class StartPointActivity extends AppCompatActivity implements OnMapReadyC
                     .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ROSE)));
             //goNext.setVisibility(View.VISIBLE);
             ll.setVisibility(View.VISIBLE);
-        }
-        else
+        } else
             mMap.animateCamera(CameraUpdateFactory.zoomTo(12));
     }
 
@@ -133,4 +150,6 @@ public class StartPointActivity extends AppCompatActivity implements OnMapReadyC
         //goNext.setVisibility(View.VISIBLE);
         ll.setVisibility(View.VISIBLE);
     }
+
 }
+

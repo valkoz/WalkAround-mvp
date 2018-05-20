@@ -66,7 +66,7 @@ public class SplashActivity extends AppCompatActivity {
     private void startChooseCity() {
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
-        final Intent intent = new Intent(this, ChooseCityActivity.class);
+        final Intent intent = new Intent(this, StartActivity.class);
 
         if (ActivityCompat.checkSelfPermission(this,
                 Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
