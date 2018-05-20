@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.view.ContextThemeWrapper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +27,8 @@ import com.google.android.gms.maps.model.RuntimeRemoteException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import ru.walkaround.walkaround.IntentUtils;
 import ru.walkaround.walkaround.R;
 import ru.walkaround.walkaround.adapters.PlaceAutocompleteAdapter;
@@ -41,12 +42,14 @@ public class ChooseCityFragment extends Fragment {
     public static final int MAX_DISTANCE_TO_CITY_CENTER = 15000;
 
     private LatLng latLng;
-    protected GeoDataClient mGeoDataClient;
-    private PlaceAutocompleteAdapter mAdapter;
-    private AutoCompleteTextView mAutocompleteView;
-    private Button goNext;
-    private Location userLocation;
+    protected GeoDataClient geoDataClient;
+    private PlaceAutocompleteAdapter autocompleteAdapter;
     private Location cityLocation;
+
+    @BindView(R.id.autocomplete_city)
+    AutoCompleteTextView autoCompleteTextView;
+    @BindView(R.id.go_next_button)
+    Button goNext;
 
     public ChooseCityFragment() {
     }
@@ -72,72 +75,75 @@ public class ChooseCityFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        final Context contextThemeWrapper = new ContextThemeWrapper(getActivity(), R.style.NoActionBarTransparent);
-        LayoutInflater localInflater = inflater.cloneInContext(contextThemeWrapper);
-        View view = localInflater.inflate(R.layout.fragment_choose_city, container, false);
+        View view = inflater.inflate(R.layout.fragment_choose_city, container, false);
+        ButterKnife.bind(this, view);
 
-        mGeoDataClient = Places.getGeoDataClient(getActivity());
+        geoDataClient = Places.getGeoDataClient(getActivity());
+        autoCompleteTextView.setOnItemClickListener(autocompleteClickListener);
+        autocompleteAdapter = new PlaceAutocompleteAdapter(getContext(),
+                geoDataClient,
+                new LatLngBounds(latLng, latLng),
+                new AutocompleteFilter.Builder()
+                        .setTypeFilter(AutocompleteFilter.TYPE_FILTER_CITIES)
+                        .build());
+        autoCompleteTextView.setAdapter(autocompleteAdapter);
 
-        userLocation = new Location("userLocation");
-        userLocation.setLatitude(latLng.latitude);
-        userLocation.setLongitude(latLng.longitude);
-
-        mAutocompleteView = view.findViewById(R.id.autocomplete_city);
-        mAutocompleteView.setOnItemClickListener(mAutocompleteClickListener);
-        AutocompleteFilter filter = new AutocompleteFilter.Builder()
-                .setTypeFilter(AutocompleteFilter.TYPE_FILTER_CITIES)
-                .build();
-        mAdapter = new PlaceAutocompleteAdapter(getContext(), mGeoDataClient, new LatLngBounds(latLng, latLng), filter);
-        mAutocompleteView.setAdapter(mAdapter);
-
-        goNext = view.findViewById(R.id.go_next_button);
-        goNext.setOnClickListener(v -> {
-
-            Log.i("OnClick", String.valueOf(userLocation.distanceTo(cityLocation)));
-
-            Bundle bundle = new Bundle();
-
-            if (userLocation.distanceTo(cityLocation) < MAX_DISTANCE_TO_CITY_CENTER) {
-                bundle.putBoolean(IntentUtils.IS_LOCATIONS_NEARBY, true);
-                bundle.putDouble(IntentUtils.LONGITUDE, latLng.longitude);
-                bundle.putDouble(IntentUtils.LATITUDE, latLng.latitude);
-            } else {
-                bundle.putBoolean(IntentUtils.IS_LOCATIONS_NEARBY, false);
-                bundle.putDouble(IntentUtils.LONGITUDE, cityLocation.getLongitude());
-                bundle.putDouble(IntentUtils.LATITUDE, cityLocation.getLatitude());
-            }
-
-            ChooseStartPointFragment chooseStartPointFragment = ChooseStartPointFragment.newInstance();
-            chooseStartPointFragment.setArguments(bundle);
-            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-            transaction.setCustomAnimations(R.anim.in_from_right, R.anim.out_to_left, android.R.anim.slide_in_left, android.R.anim.slide_out_right);
-            transaction.add(R.id.fragment_content, chooseStartPointFragment);
-            transaction.hide(ChooseCityFragment.this);
-            transaction.addToBackStack(null);
-            transaction.commit();
-
-        });
-
+        goNext.setOnClickListener(v -> onNextButtonClick());
 
         return view;
     }
 
-    private AdapterView.OnItemClickListener mAutocompleteClickListener
+    private void onNextButtonClick() {
+
+        Location userLocation = new Location("userLocation");
+        userLocation.setLatitude(latLng.latitude);
+        userLocation.setLongitude(latLng.longitude);
+
+        Bundle bundle = new Bundle();
+
+        if (userLocation.distanceTo(cityLocation) < MAX_DISTANCE_TO_CITY_CENTER) {
+            bundle.putBoolean(IntentUtils.IS_LOCATIONS_NEARBY, true);
+            bundle.putDouble(IntentUtils.LONGITUDE, latLng.longitude);
+            bundle.putDouble(IntentUtils.LATITUDE, latLng.latitude);
+        } else {
+            bundle.putBoolean(IntentUtils.IS_LOCATIONS_NEARBY, false);
+            bundle.putDouble(IntentUtils.LONGITUDE, cityLocation.getLongitude());
+            bundle.putDouble(IntentUtils.LATITUDE, cityLocation.getLatitude());
+        }
+
+        changeFragment(bundle);
+    }
+
+    private void changeFragment(Bundle bundle) {
+        ChooseStartPointFragment chooseStartPointFragment = ChooseStartPointFragment.newInstance();
+        chooseStartPointFragment.setArguments(bundle);
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        transaction.setCustomAnimations(
+                R.anim.in_from_right,
+                R.anim.out_to_left,
+                android.R.anim.slide_in_left,
+                android.R.anim.slide_out_right);
+        transaction.add(R.id.fragment_content, chooseStartPointFragment);
+        transaction.hide(ChooseCityFragment.this);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+
+    private AdapterView.OnItemClickListener autocompleteClickListener
             = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-            final AutocompletePrediction item = mAdapter.getItem(position);
+            final AutocompletePrediction item = autocompleteAdapter.getItem(position);
 
             if (item != null) {
                 final String placeId = item.getPlaceId();
                 final CharSequence primaryText = item.getPrimaryText(null);
 
-
                 Log.i(TAG, "Autocomplete item selected: " + primaryText);
 
-                Task<PlaceBufferResponse> placeResult = mGeoDataClient.getPlaceById(placeId);
-                placeResult.addOnCompleteListener(mUpdatePlaceDetailsCallback);
+                Task<PlaceBufferResponse> placeResult = geoDataClient.getPlaceById(placeId);
+                placeResult.addOnCompleteListener(updatePlaceDetailsCallback);
 
                 Log.i(TAG, "Called getPlaceById to get Place details for " + placeId);
 
@@ -146,7 +152,7 @@ public class ChooseCityFragment extends Fragment {
         }
     };
 
-    private OnCompleteListener<PlaceBufferResponse> mUpdatePlaceDetailsCallback
+    private OnCompleteListener<PlaceBufferResponse> updatePlaceDetailsCallback
             = new OnCompleteListener<PlaceBufferResponse>() {
         @Override
         public void onComplete(@NonNull Task<PlaceBufferResponse> task) {
@@ -173,7 +179,8 @@ public class ChooseCityFragment extends Fragment {
     public void hideKeyboard() {
         View view = getActivity().getCurrentFocus();
         if (view != null) {
-            InputMethodManager inputManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+            InputMethodManager inputManager =
+                    (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
             if (inputManager != null) {
                 inputManager.hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
             }

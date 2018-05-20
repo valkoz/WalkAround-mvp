@@ -7,28 +7,28 @@ import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import ru.walkaround.walkaround.R;
 
 public class ChangeOptionsActivity extends AppCompatActivity {
 
-    private SeekBar timeSeekBar;
-    private SeekBar distanceSeekBar;
-    private TextView time;
-    private TextView distance;
-    private Button button;
-
+    @BindView(R.id.change_options_seekbar_time)
+    SeekBar timeSeekBar;
+    @BindView(R.id.change_options_seekbar_distance)
+    SeekBar distanceSeekBar;
+    @BindView(R.id.change_options_textview_time)
+    TextView time;
+    @BindView(R.id.change_options_textview_distance)
+    TextView distance;
+    @BindView(R.id.change_options_refresh_routes)
+    Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_options);
-
-
-        timeSeekBar = findViewById(R.id.change_options_seekbar_time);
-        distanceSeekBar = findViewById(R.id.change_options_seekbar_distance);
-        time = findViewById(R.id.change_options_textview_time);
-        distance = findViewById(R.id.change_options_textview_distance);
-        button = findViewById(R.id.change_options_refresh_routes);
+        ButterKnife.bind(this);
 
         timeSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override

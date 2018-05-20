@@ -33,6 +33,8 @@ import com.google.android.gms.maps.model.PolylineOptions;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import ru.walkaround.walkaround.R;
 import ru.walkaround.walkaround.StubDataUtils;
 import ru.walkaround.walkaround.model.Place;
@@ -43,32 +45,33 @@ public class MainActivity extends AppCompatActivity {
 
     private List<Route> routes = new ArrayList<>();
     private List<Place> chosenPlaces = new ArrayList<>();
-    private MapView mapView;
     private GoogleMap map;
-    private FloatingActionButton fab;
 
-    private RelativeLayout bottomCard;
-    private TextView bottomCardPrimaryText;
-    private TextView bottomCardSecondaryText;
-    private ImageView bottomCardImageView;
-    private ImageView bottomCardIcon;
-    private RatingBar ratingBar;
+    @BindView(R.id.main_map_view)
+    MapView mapView;
+    @BindView(R.id.map_fab)
+    FloatingActionButton fab;
+    @BindView(R.id.bottom_card)
+    RelativeLayout bottomCard;
+    @BindView(R.id.bottom_card_text_primary)
+    TextView bottomCardPrimaryText;
+    @BindView(R.id.bottom_card_text_secondary)
+    TextView bottomCardSecondaryText;
+    @BindView(R.id.bottom_card_image)
+    ImageView bottomCardImageView;
+    @BindView(R.id.bottom_card_icon)
+    ImageView bottomCardIcon;
+    @BindView(R.id.bottom_card_rating)
+    RatingBar ratingBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        ButterKnife.bind(this);
         mapView = findViewById(R.id.main_map_view);
         mapView.onCreate(savedInstanceState);
-
-        fab = findViewById(R.id.map_fab);
-        bottomCard = findViewById(R.id.bottom_card);
-        bottomCardPrimaryText = findViewById(R.id.bottom_card_text_primary);
-        bottomCardSecondaryText = findViewById(R.id.bottom_card_text_secondary);
-        bottomCardImageView = findViewById(R.id.bottom_card_image);
-        bottomCardIcon = findViewById(R.id.bottom_card_icon);
-        ratingBar = findViewById(R.id.bottom_card_rating);
 
         StubDataUtils.generateDemoRoutes(this, routes); //TODO: Remove in prod
 

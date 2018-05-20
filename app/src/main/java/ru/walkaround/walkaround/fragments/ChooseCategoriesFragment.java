@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import ru.walkaround.walkaround.R;
 import ru.walkaround.walkaround.adapters.CategoryRecyclerAdapter;
 import ru.walkaround.walkaround.listeners.RecyclerViewClickListener;
@@ -23,7 +25,8 @@ public class ChooseCategoriesFragment extends Fragment {
 
     private final List<String> categoryNames = Arrays.asList("Entertainment", "Food", "Museum", "Park", "Religion", "Shop");
 
-    private Button button;
+    @BindView(R.id.category_button)
+    Button button;
 
     public ChooseCategoriesFragment() {
     }
@@ -38,7 +41,7 @@ public class ChooseCategoriesFragment extends Fragment {
 
         View fragmentView = inflater.inflate(R.layout.fragment_choose_categories, container, false);
         RecyclerView recyclerView = fragmentView.findViewById(R.id.categories_list);
-        button = fragmentView.findViewById(R.id.category_button);
+        ButterKnife.bind(this, fragmentView);
 
         List<Category> categories = new ArrayList<>();
 
