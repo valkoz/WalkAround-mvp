@@ -18,6 +18,8 @@ import com.bumptech.glide.request.RequestOptions;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import ru.walkaround.walkaround.R;
 import ru.walkaround.walkaround.listeners.RecyclerViewClickListener;
 import ru.walkaround.walkaround.model.Place;
@@ -33,25 +35,26 @@ public class ChooseRouteRecyclerAdapter extends
     //OnClick implemented as here: https://android.jlelse.eu/click-listener-for-recyclerview-adapter-2d17a6f6f6c9
     public class RouteViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        public TextView timeInMinutes;
-        public TextView distance;
-        public TextView cost;
-        public TextView firstPlace;
-        public TextView secondPlace;
-        public TextView thirdPlace;
-        public ImageView imageView;
+        @BindView(R.id.choose_route_time)
+        TextView timeInMinutes;
+        @BindView(R.id.choose_route_distance)
+        TextView distance;
+        @BindView(R.id.choose_route_cost)
+        TextView cost;
+        @BindView(R.id.choose_route_place1)
+        TextView firstPlace;
+        @BindView(R.id.choose_route_place2)
+        TextView secondPlace;
+        @BindView(R.id.choose_route_place3)
+        TextView thirdPlace;
+        @BindView(R.id.choose_route_image)
+        ImageView imageView;
 
         private RecyclerViewClickListener listener;
 
         public RouteViewHolder(View view, RecyclerViewClickListener listener) {
             super(view);
-            timeInMinutes = view.findViewById(R.id.choose_route_time);
-            distance = view.findViewById(R.id.choose_route_distance);
-            cost = view.findViewById(R.id.choose_route_cost);
-            firstPlace = view.findViewById(R.id.choose_route_place1);
-            secondPlace = view.findViewById(R.id.choose_route_place2);
-            thirdPlace = view.findViewById(R.id.choose_route_place3);
-            imageView = view.findViewById(R.id.choose_route_image);
+            ButterKnife.bind(this, view);
             this.listener = listener;
             view.setOnClickListener(this);
         }

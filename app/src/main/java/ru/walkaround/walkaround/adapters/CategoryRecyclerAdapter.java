@@ -17,6 +17,8 @@ import com.bumptech.glide.request.RequestOptions;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import ru.walkaround.walkaround.R;
 import ru.walkaround.walkaround.listeners.RecyclerViewClickListener;
 import ru.walkaround.walkaround.model.Category;
@@ -35,18 +37,18 @@ public class CategoryRecyclerAdapter extends
 
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        public TextView countryText;
-        public ImageView imageView;
-        public CheckBox checkBox;
+        @BindView(R.id.category_label)
+        TextView countryText;
+        @BindView(R.id.category_image)
+        ImageView imageView;
+        @BindView(R.id.category_check_box)
+        CheckBox checkBox;
 
         private RecyclerViewClickListener listener;
 
         public MyViewHolder(View view, RecyclerViewClickListener listener) {
             super(view);
-            countryText = view.findViewById(R.id.label);
-            checkBox = view.findViewById(R.id.category_check_box);
-            imageView = view.findViewById(R.id.image_category);
-
+            ButterKnife.bind(this, view);
             this.listener = listener;
             view.setOnClickListener(this);
         }

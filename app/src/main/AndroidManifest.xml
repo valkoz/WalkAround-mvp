@@ -25,24 +25,14 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.ChooseCityActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/NoActionBarTransparent"
-            android:windowSoftInputMode="stateVisible" />
-        <activity
-            android:name=".activities.StartPointActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/NoActionBar" />
-        <activity
-            android:name=".activities.CategoryActivity"
-            android:label="@string/title_activity_category"
+            android:name=".activities.MainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activities.ChooseRouteActivity"
-            android:label="@string/routes"
+            android:name=".activities.ChangeOptionsActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".activities.MainActivity" />
-        <activity android:name=".activities.ChangeOptionsActivity"></activity>
+        <activity
+            android:name=".activities.StartActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

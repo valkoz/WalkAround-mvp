@@ -33,6 +33,8 @@ import com.google.android.gms.maps.model.PolylineOptions;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import ru.walkaround.walkaround.R;
 import ru.walkaround.walkaround.StubDataUtils;
 import ru.walkaround.walkaround.model.Place;
@@ -43,32 +45,33 @@ public class MainActivity extends AppCompatActivity {
 
     private List<Route> routes = new ArrayList<>();
     private List<Place> chosenPlaces = new ArrayList<>();
-    private MapView mapView;
     private GoogleMap map;
-    private FloatingActionButton fab;
 
-    private RelativeLayout bottomCard;
-    private TextView bottomCardPrimaryText;
-    private TextView bottomCardSecondaryText;
-    private ImageView bottomCardImageView;
-    private ImageView bottomCardIcon;
-    private RatingBar ratingBar;
+    @BindView(R.id.main_map_view)
+    MapView mapView;
+    @BindView(R.id.map_fab)
+    FloatingActionButton fab;
+    @BindView(R.id.bottom_card)
+    RelativeLayout bottomCard;
+    @BindView(R.id.bottom_card_text_primary)
+    TextView bottomCardPrimaryText;
+    @BindView(R.id.bottom_card_text_secondary)
+    TextView bottomCardSecondaryText;
+    @BindView(R.id.bottom_card_image)
+    ImageView bottomCardImageView;
+    @BindView(R.id.bottom_card_icon)
+    ImageView bottomCardIcon;
+    @BindView(R.id.bottom_card_rating)
+    RatingBar ratingBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        ButterKnife.bind(this);
         mapView = findViewById(R.id.main_map_view);
         mapView.onCreate(savedInstanceState);
-
-        fab = findViewById(R.id.map_fab);
-        bottomCard = findViewById(R.id.bottom_card);
-        bottomCardPrimaryText = findViewById(R.id.bottom_card_text_primary);
-        bottomCardSecondaryText = findViewById(R.id.bottom_card_text_secondary);
-        bottomCardImageView = findViewById(R.id.bottom_card_image);
-        bottomCardIcon = findViewById(R.id.bottom_card_icon);
-        ratingBar = findViewById(R.id.bottom_card_rating);
 
         StubDataUtils.generateDemoRoutes(this, routes); //TODO: Remove in prod
 
@@ -83,17 +86,55 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setUpMap(GoogleMap map, int routeIndex) {
+        if (routeIndex == 0) {
+            map.addPolyline(new PolylineOptions()
+                    .add(new LatLng(55.756221, 37.617069), new LatLng(55.754267, 37.620739))
+                    .add(new LatLng(55.754267, 37.620739), new LatLng(55.7548273, 37.6209261))
+                    .add(new LatLng(55.7548273, 37.6209261), new LatLng(55.755586, 37.619868))
+                    .add(new LatLng(55.755586, 37.619868), new LatLng(55.758993, 37.625046))
+                    .add(new LatLng(55.758993, 37.625046), new LatLng(55.759348, 37.625468))
+                    .add(new LatLng(55.759348, 37.625468), new LatLng(55.7598306, 37.6257178))
+                    .width(5)
+                    .color(R.color.textColor));
+
+            CameraUpdate center =
+                    CameraUpdateFactory.newLatLng(new LatLng(55.7570495, 37.6214716));
+            CameraUpdate zoom = CameraUpdateFactory.zoomTo(15);
+            map.moveCamera(center);
+            map.animateCamera(zoom);
+        } else {
+            map.addPolyline(new PolylineOptions()
+                    .add(new LatLng(55.756221, 37.617069), new LatLng(55.756358, 37.615704))
+                    .add(new LatLng(55.756358, 37.615704), new LatLng(55.756925, 37.615625))
+                    .add(new LatLng(55.756925, 37.615625), new LatLng(55.757464, 37.616638))
+                    .add(new LatLng(55.757464, 37.616638), new LatLng(55.758472, 37.618278))
+                    .add(new LatLng(55.758472, 37.618278), new LatLng(55.758656, 37.619372))
+                    .add(new LatLng(55.758656, 37.619372), new LatLng(55.759725, 37.618823))
+                    .add(new LatLng(55.759725, 37.618823), new LatLng(55.759871, 37.619551))
+                    .add(new LatLng(55.759871, 37.619551), new LatLng(55.760956, 37.619083))
+                    .add(new LatLng(55.760956, 37.619083), new LatLng(55.761610, 37.618255))
+                    .add(new LatLng(55.761610, 37.618255), new LatLng(55.7603913, 37.6151306))
+                    .width(5)
+                    .color(R.color.textColor));
+
+            CameraUpdate center =
+                    CameraUpdateFactory.newLatLng(new LatLng(55.758860, 37.616556));
+            CameraUpdate zoom = CameraUpdateFactory.zoomTo(16);
+            map.moveCamera(center);
+            map.animateCamera(zoom);
+        }
+
         this.map = map;
         chosenPlaces = routes.get(routeIndex).getPlaces();
 
-        CameraUpdate center =
+        /*CameraUpdate center =
                 CameraUpdateFactory.newLatLng(chosenPlaces.get(0).getLatLng());
         CameraUpdate zoom = CameraUpdateFactory.zoomTo(14);
 
         map.moveCamera(center);
-        map.animateCamera(zoom);
+        map.animateCamera(zoom);*/
 
-        LatLng previous = null;
+//        LatLng previous = null;
 
         for (Place place : chosenPlaces) {
 
@@ -107,14 +148,14 @@ public class MainActivity extends AppCompatActivity {
             Marker marker = map.addMarker(markerOptions);
             marker.hideInfoWindow();
 
-            if (previous != null) {
+            /*if (previous != null) {
                 map.addPolyline(new PolylineOptions()
                         .add(previous, place.getLatLng())
                         .width(5)
                         .color(R.color.textColor));
             }
 
-            previous = place.getLatLng();
+            previous = place.getLatLng();*/
         }
 
         map.setOnMarkerClickListener(marker -> {
